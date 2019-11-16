@@ -11,20 +11,22 @@ class IntermediatesController < ApplicationController
   end
 
   def create
+    entry_period = Date.new(intermediate_params["entry_period(1i)"].to_i, intermediate_params["entry_period(2i)"].to_i, intermediate_params["entry_period(3i)"].to_i)
+    work_period = Date.new(intermediate_params["work_period(1i)"].to_i, intermediate_params["work_period(2i)"].to_i, intermediate_params["work_period(3i)"].to_i)
     @intermediate = Intermediate.new(
-                                      title:          params[:intermediate][:title],
-                                      category:       params[:intermediate][:category],
-                                      language:       params[:intermediate][:language],
-                                      detail:         params[:intermediate][:detail],
+                                      title:          intermediate_params[:title],
+                                      category:       intermediate_params[:category],
+                                      language:       intermediate_params[:language],
+                                      detail:         intermediate_params[:detail],
                                       entry_period:   entry_period,
                                       work_period:    work_period,
-                                      recruit_member: params[:intermediate][:recruit_member]
+                                      recruit_member: intermediate_params[:recruit_member],
+                                      user_id:        intermediate_params[:user_id]
     )
-    binding.pry
     if @intermediate.save
       redirect_to root_path
     else
-      render :show
+      render :index
     end
   end
 
@@ -46,10 +48,8 @@ class IntermediatesController < ApplicationController
 
   private
   def intermediate_params
-    binding.pry
-    entry_period = Date.new(params[:intermediate]["entry_period(1i)"].to_i, params[:intermediate]["entry_period(2i)"].to_i, params[:intermediate]["entry_period(3i)"].to_i)
-    work_period = Date.new(params[:intermediate]["work_period(1i)"].to_i, params[:intermediate]["work_period(2i)"].to_i, params[:intermediate]["work_period(3i)"].to_i)
-    params.require(:intermediate).permit(:title, :category, :language, :detail, :entry_period, :work_period, :recruit_member).merge(user_id: current_user.id)
+    # binding.pry
+    params.require(:intermediate).permit(:title, :category, :language, :detail, "entry_period(1i)", "entry_period(2i)", "entry_period(3i)", "work_period(1i)", "work_period(2i)", "work_period(3i)", :recruit_member).merge(user_id: current_user.id)
   end
 
   def set_intermediate
