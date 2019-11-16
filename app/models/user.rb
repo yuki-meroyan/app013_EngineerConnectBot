@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :Trackable, :Timeoutable
 
   mount_uploader :image, UserImageUploader
+  has_one :user_detail
 end

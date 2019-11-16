@@ -1,0 +1,37 @@
+
+#topPage
+  .topPage__header
+    .topPage__header__title
+      Engineer Connect Bot
+    .topPage__header__title
+      〜 エンジニアと繋がりたいを叶える 〜
+  .topPage__contents
+    - if user_signed_in?
+      = image_tag current_user.image.to_s, size: "100x100", alt: "test"
+      .topPage__content
+        = link_to "ユーザー編集", edit_user_registration_path
+      .topPage__content
+        = link_to "ユーザー詳細登録", new_user_details_path
+      .topPage__content
+        = link_to "詳細を編集", edit_user_details_path
+    - else
+      .topPage__content
+        = link_to "ログイン", new_user_session_path
+      .topPage__content
+        = link_to "ユーザーを作成", new_user_registration_path
+    .topPage__content
+      ユーザーを検索
+    .topPage__content
+      グループを作成
+    .topPage__content
+      グループを検索
+    .topPage__content
+      記事を投稿する
+    .topPage__content
+      記事を検索する
+    .topPage__content
+      上級者カテゴリー
+    .topPage__content
+      中級者カテゴリー
+    .topPage__content
+      初級者カテゴリー
