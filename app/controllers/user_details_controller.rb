@@ -1,5 +1,6 @@
 class UserDetailsController < ApplicationController
   before_action :user_detail_params, only: [:create, :update]
+  before_action :set_user_detail   , only: [:edit  , :update, :show]
 
   def new
     @user_detail = UserDetail.new
@@ -15,18 +16,28 @@ class UserDetailsController < ApplicationController
   end
 
   def show
+
   end
 
   def edit
+
   end
 
   def update
-    @user_detail = UserDetail.find_by()
+    if @user_detail.update(user_detail_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   private
   def user_detail_params
     params.require(:user_detail).permit(:family_name, :first_name, :address, :level, :language, :detail).merge(user_id: current_user.id)
+  end
+
+  def set_user_detail
+    @user_detail = UserDetail.find_by(user_id: current_user.id)
   end
 
 end

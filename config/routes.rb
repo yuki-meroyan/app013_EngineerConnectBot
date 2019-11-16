@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'engineer_connect_bots#top'
   get '/engineer_connect_bots/top', to: 'engineer_connect_bots#top'
-  resource :user_details
-  # resources
+  resource  :user_details
+  resources :beginners
 end

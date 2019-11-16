@@ -17,8 +17,10 @@ ActiveRecord::Schema.define(version: 2019_11_16_103057) do
     t.string "category", default: "", null: false
     t.string "language", default: "", null: false
     t.text "detail", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_beginners_on_user_id"
   end
 
   create_table "group_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -58,8 +60,10 @@ ActiveRecord::Schema.define(version: 2019_11_16_103057) do
     t.date "entry_period", null: false
     t.date "work_period", null: false
     t.integer "recruit_member", default: 1, null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_intermediates_on_user_id"
   end
 
   create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -88,8 +92,10 @@ ActiveRecord::Schema.define(version: 2019_11_16_103057) do
     t.date "work_period", null: false
     t.integer "assing_user"
     t.boolean "assing"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_seniors_on_user_id"
   end
 
   create_table "user_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -124,10 +130,13 @@ ActiveRecord::Schema.define(version: 2019_11_16_103057) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "beginners", "users"
   add_foreign_key "group_messages", "groups"
   add_foreign_key "group_messages", "users"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
+  add_foreign_key "intermediates", "users"
   add_foreign_key "private_messages", "users"
+  add_foreign_key "seniors", "users"
   add_foreign_key "user_details", "users"
 end
