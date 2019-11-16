@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get '/engineer_connect_bots/top', to: 'engineer_connect_bots#top'
   resource  :user_details
   resources :beginners
+  resources :intermediates
 end

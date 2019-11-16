@@ -1,0 +1,23 @@
+= form_with(model: @intermediate, local: true) do |f|
+  = f.label :title do
+    title
+    = f.text_field :title
+  = f.label :category do
+    category
+    = f.text_field :category
+  = f.label :language do
+    language
+    = f.text_field :language
+  = f.label :detail do
+    detail
+    = f.text_area :detail
+  = f.label :entry_period do
+    entry_period
+    = f.date_select :entry_period
+  = f.label :work_period do
+    work_period
+    = f.date_select :work_period, default: { year: 2020, month: 4, day: 1 }
+  = f.label :recruit_member do
+    recruit_member
+    = f.text_field :recruit_member
+  = f.submit "登録する",type: "submit"

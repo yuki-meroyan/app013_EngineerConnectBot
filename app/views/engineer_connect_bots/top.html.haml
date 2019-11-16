@@ -34,7 +34,12 @@
     .topPage__content
       上級者カテゴリー
     .topPage__content
-      中級者カテゴリー
+      = link_to "中級者カテゴリー作成", new_intermediate_path
+    .topPage__content
+      = link_to "中級者カテゴリー編集", edit_intermediate_path(id: 1)
+    .topPage__content
+      = link_to "中級者カテゴリー確認", intermediates_path
+
     .topPage__content
       = link_to "初級者カテゴリー作成", new_beginner_path
     .topPage__content
