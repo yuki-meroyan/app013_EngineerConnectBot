@@ -13,10 +13,12 @@
     = f.text_area :detail
   = f.label :entry_period do
     entry_period
-    = f.date_select :entry_period
+    = f.text_field :entry_period, id: "entry_period"
   = f.label :work_period do
     work_period
-    = f.date_select :work_period, default: { year: 2020, month: 4, day: 1 }
+    = f.text_field :work_period, id: "work_period"
+    -# = f.date_select :work_period, default: { year: 2020, month: 4, day: 1 }
+  -# %input#datepicker{:type => "text"}
   = f.label :recruit_member do
     recruit_member
     = f.text_field :recruit_member
