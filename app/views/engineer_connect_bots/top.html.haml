@@ -31,14 +31,24 @@
       記事を投稿する
     .topPage__content
       記事を検索する
+
     .topPage__content
-      上級者カテゴリー
+      = link_to "上級者カテゴリー一覧", seniors_path
+    .topPage__content
+      = link_to "上級者カテゴリー作成", new_senior_path
+    .topPage__content
+      = link_to "上級者カテゴリー編集", edit_senior_path(id: 1)
+    .topPage__content
+      = link_to "上級者カテゴリー確認", senior_path(id: 1)
+
+    .topPage__content
+      = link_to "中級者カテゴリー一覧", intermediates_path
     .topPage__content
       = link_to "中級者カテゴリー作成", new_intermediate_path
     .topPage__content
       = link_to "中級者カテゴリー編集", edit_intermediate_path(id: 1)
     .topPage__content
-      = link_to "中級者カテゴリー確認", intermediates_path
+      = link_to "中級者カテゴリー確認", intermediate_path(id: 1)
 
     .topPage__content
       = link_to "初級者カテゴリー作成", new_beginner_path

@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resource  :user_details
   resources :beginners
   resources :intermediates
+  resources :seniors
 end

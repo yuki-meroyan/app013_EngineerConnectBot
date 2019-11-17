@@ -1,0 +1,23 @@
+- @intermediates.each do |intermediate|
+  .request__contents
+    .request__content
+      タイトル
+      = intermediate.title
+    .request__content
+      カテゴリー
+      = intermediate.category
+    .request__content
+      言語
+      = intermediate.language
+    .request__content
+      詳細
+      = intermediate.detail
+    .request__content
+      申込期限
+      = intermediate.entry_period
+    .request__content
+      開発期間
+      = intermediate.work_period
+    .request__content
+      募集人数
+      = intermediate.recruit_member
