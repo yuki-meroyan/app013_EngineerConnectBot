@@ -1,1 +1,30 @@
 
+= search_form_for @beginner, class: "mb-5" do |f|
+  .search__form__contents
+    = f.label :title_cont, 'タイトル', class: 'col-sm-2 col-form-label'
+    .search__form__content
+      = f.search_field :title_cont, class: 'form-control'
+  .search__form__btn
+    = f.submit class: 'btn btn-outline-primary'
+  - @beginners.each do |beginner|
+    = beginner.title
+
+= search_form_for @intermediate, as: :p, class: "mb-5" do |f|
+  .search__form__contents
+    = f.label :title_cont, 'タイトル', class: 'col-sm-2 col-form-label'
+    .search__form__content
+      = f.search_field :title_cont, class: 'form-control'
+  .search__form__btn
+    = f.submit class: 'btn btn-outline-primary'
+  - @intermediates.each do |intermediate|
+    = intermediate.title
+
+= search_form_for @senior, as: :x, class: "mb-5" do |f|
+  .search__form__contents
+    = f.label :title_cont, 'タイトル', class: 'col-sm-2 col-form-label'
+    .search__form__content
+      = f.search_field :title_cont, class: 'form-control'
+  .search__form__btn
+    = f.submit class: 'btn btn-outline-primary'
+  - @seniors.each do |senior|
+    = senior.title

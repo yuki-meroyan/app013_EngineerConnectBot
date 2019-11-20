@@ -6,14 +6,14 @@ class EngineerConnectBotsController < ApplicationController
   end
 
   def search
-    @beginner = Beginner.ransack(params[:beginner])
-    @beginners = @beginner.result(distinct: true).recent
+    @beginner = Beginner.ransack(params[:q])
+    @beginners = @beginner.result(distinct: true)
 
-    @intermediate = Intermediate.ransack(params[:intermediate])
-    @intermediates = @intermediate.result(distinct: true).recent
+    @intermediate = Intermediate.ransack(params[:p], search_key: :p)
+    @intermediates = @intermediate.result(distinct: true)
 
-    @senior = Senior.ransack(params[:senior])
-    @seniors = @senior.result(distinct: true).recent
+    @senior = Senior.ransack(params[:x], search_key: :x)
+    @seniors = @senior.result(distinct: true)
   end
 
 end
