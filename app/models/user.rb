@@ -10,4 +10,6 @@ class User < ApplicationRecord
   has_many :beginners
   has_many :intermediates
   has_many :seniors
+  has_many :group_users, dependent: :destroy
+  has_many :groups, through: :group_users
 end
