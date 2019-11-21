@@ -3,7 +3,8 @@ class BeginnersController < ApplicationController
   before_action :set_beginner   , only: [:edit  , :update, :show]
 
   def index
-    @beginners = Beginner.all
+    @beginner = Beginner.ransack(params[:q])
+    @beginners = @beginner.result(distinct: true)
   end
 
   def new

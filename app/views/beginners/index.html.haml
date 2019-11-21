@@ -1,14 +1,21 @@
-- @beginners.each do |beginner|
-  .request__contents
-    .request__content
-      タイトル
-      = beginner.title
-    .request__content
-      カテゴリー
-      = beginner.category
-    .request__content
-      言語
-      = beginner.language
-    .request__content
-      詳細
-      = beginner.detail
+= search_form_for @beginner, class: "mb-5" do |f|
+  .search__form__contents
+    = f.label :title_cont, 'タイトル', class: 'col-sm-2 col-form-label'
+    .search__form__content
+      = f.search_field :title_cont, class: 'form-control'
+  .search__form__btn
+    = f.submit class: 'btn btn-outline-primary'
+  - @beginners.each do |beginner|
+    .request__contents
+      .request__content
+        タイトル
+        = beginner.title
+      .request__content
+        カテゴリー
+        = beginner.category
+      .request__content
+        言語
+        = beginner.language
+      .request__content
+        詳細
+        = beginner.detail
