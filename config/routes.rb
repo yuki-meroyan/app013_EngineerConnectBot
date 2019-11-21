@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :beginners
   resources :intermediates
   resources :seniors
+  resources :groups
 end

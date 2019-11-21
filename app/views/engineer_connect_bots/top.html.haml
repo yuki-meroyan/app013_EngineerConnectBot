@@ -26,11 +26,9 @@
     .topPage__content
       = link_to "ユーザーを検索", users_path
     .topPage__content
-      グループを作成
+      = link_to 'グループを作成', new_group_path
     .topPage__content
-      グループを検索
-    .topPage__content
-      記事を投稿する
+      = link_to 'グループを検索', groups_path
     .topPage__content
       = link_to '記事を検索する', engineer_connect_bots_search_path
 

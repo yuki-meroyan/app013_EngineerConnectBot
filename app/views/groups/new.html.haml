@@ -1,0 +1,12 @@
+= form_with(model: @group, local: true) do |f|
+  = f.label :name, class: 'test'
+  = f.text_field :name, class: 'test', placeholder: 'グループ名を入力してください'
+  = f.submit class: 'chat-group-form__action-btn'
+  %label.chat-group-form__label{for: "chat_group_チャットメンバーを追加"} チャットメンバーを追加
+  %input#user-search-field.chat-group-form__input{placeholder: "追加したいユーザー名を入力してください", type: "text"}/
+  %label.chat-group-form__label{:for => "chat_group_チャットメンバー"} チャットメンバー
+- @group.users.each do |user|
+  %input{id: "group_user_ids", name: "group[user_ids][]", type: "hidden", value: user.id}/
+  = user.name
+  - if user.id != current_user.id
+    削除
