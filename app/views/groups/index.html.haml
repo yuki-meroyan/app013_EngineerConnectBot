@@ -1,0 +1,10 @@
+= search_form_for @group, class: "mb-5" do |f|
+  .search__form__contents
+    = f.label :name_cont, 'グループ名', class: 'col-sm-2 col-form-label'
+    .search__form__content
+      = f.search_field :name_cont, class: 'form-control'
+  .search__form__btn
+    = f.submit class: 'btn btn-outline-primary'
+  - if @groups.present?
+    - @groups.each do |group|
+      = group.name

@@ -3,7 +3,8 @@ class SeniorsController < ApplicationController
   before_action :set_senior   , only: [:edit  , :update, :show]
 
   def index
-    @seniors = Senior.all
+    @senior = Senior.ransack(params[:x], search_key: :x)
+    @seniors = @senior.result(distinct: true)
   end
 
   def new

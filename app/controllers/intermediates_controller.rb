@@ -3,7 +3,8 @@ class IntermediatesController < ApplicationController
   before_action :set_intermediate   , only: [:edit  , :update, :show]
 
   def index
-    @intermediates = Intermediate.all
+    @intermediate = Intermediate.ransack(params[:p], search_key: :p)
+    @intermediates = @intermediate.result(distinct: true)
   end
 
   def new

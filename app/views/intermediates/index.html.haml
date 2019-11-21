@@ -1,23 +1,30 @@
-- @intermediates.each do |intermediate|
-  .request__contents
-    .request__content
-      タイトル
-      = intermediate.title
-    .request__content
-      カテゴリー
-      = intermediate.category
-    .request__content
-      言語
-      = intermediate.language
-    .request__content
-      詳細
-      = intermediate.detail
-    .request__content
-      申込期限
-      = intermediate.entry_period
-    .request__content
-      開発期間
-      = intermediate.work_period
-    .request__content
-      募集人数
-      = intermediate.recruit_member
+= search_form_for @intermediate, as: :p, class: "mb-5" do |f|
+  .search__form__contents
+    = f.label :title_cont, 'タイトル', class: 'col-sm-2 col-form-label'
+    .search__form__content
+      = f.search_field :title_cont, class: 'form-control'
+  .search__form__btn
+    = f.submit class: 'btn btn-outline-primary'
+  - @intermediates.each do |intermediate|
+    .request__contents
+      .request__content
+        タイトル
+        = intermediate.title
+      .request__content
+        カテゴリー
+        = intermediate.category
+      .request__content
+        言語
+        = intermediate.language
+      .request__content
+        詳細
+        = intermediate.detail
+      .request__content
+        申込期限
+        = intermediate.entry_period
+      .request__content
+        開発期間
+        = intermediate.work_period
+      .request__content
+        募集人数
+        = intermediate.recruit_member
