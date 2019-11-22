@@ -42,14 +42,16 @@
       display: flex;
       margin: 0 auto;
       width: 500px;
+      justify-content: center;
 
       &--text{
-
+        font-size: 25px;
       }
       &--image{
         border-radius: 100%;
       }
       &__name{
+        margin: 0 50px;
         p{
           display: block;
         }
