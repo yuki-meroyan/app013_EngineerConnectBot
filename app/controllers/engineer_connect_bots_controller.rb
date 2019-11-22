@@ -16,4 +16,8 @@ class EngineerConnectBotsController < ApplicationController
     @seniors = @senior.result(distinct: true)
   end
 
+  def article
+
+  end
+
 end
