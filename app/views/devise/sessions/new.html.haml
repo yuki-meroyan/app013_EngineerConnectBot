@@ -14,8 +14,7 @@
           = f.label :remember_me, class: "form__label"
           = f.check_box :remember_me, class: "form__check"
       .form__content
-        .form__button
-          = f.submit "ログインする"
+        = f.submit "ログインする", class: "form__button"
       .form__content
         .form__link
           = render "devise/shared/links"
