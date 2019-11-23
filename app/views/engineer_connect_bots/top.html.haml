@@ -1,4 +1,36 @@
 
+%header.header
+  .inner
+    %h1#logo
+      = link_to root_path do
+        .topPage__header__title
+          %span.topPage__header__title--text
+            Engineer Connect Bot
+        .topPage__header__title
+          %span.topPage__header__title--subtext
+            〜 エンジニアと繋がりたいを叶える 〜
+
+#menu-box.nav-fix-pos
+  / PC用（481px以上端末）メニュー
+  %nav#menubar
+    %ul
+      %li.menuimg.menu1
+        = link_to '自己管理', root_path
+      %li.menuimg.menu2
+        = link_to 'ユーザー', root_path
+      %li.menuimg.menu3
+        = link_to 'グループ', root_path
+        %ul.ddmenu
+          %li
+            = link_to 'グループを作成', root_path
+          %li
+            = link_to 'グループを編集', root_path
+          %li
+            = link_to 'グループを検索', root_path
+      %li.menuimg.menu4
+        = link_to '投稿', root_path
+
+
 #topPage
   .topPage__header
     .topPage__header__contents

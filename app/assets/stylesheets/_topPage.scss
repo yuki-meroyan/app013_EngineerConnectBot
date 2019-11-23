@@ -26,12 +26,13 @@
       text-align: center;
     }
     &__title{
-      margin: 20px 0;
+      color: black;
       &--text{
-        font-size: 50px;
+        font-size: 35px;
       }
       &--subtext{
-        font-size: 20px;
+        margin-left: 35px;
+        font-size: 18px;
       }
     }
   }
