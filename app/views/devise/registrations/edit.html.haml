@@ -7,45 +7,38 @@
       .form__content
         = f.label :email, class: "form__label"
         = f.email_field :email, autofocus: true, autocomplete: "email", class: "form__box"
-
-      .field
-        = f.label :email
-        %br/
-        = f.email_field :email, autofocus: true, autocomplete: "email"
-      .field
-        = f.label :name
-        %br/
-        = f.text_field :name
-      .field
-        = f.label :image
-        %br/
-        = f.file_field :image
-        %br/
+      .form__content
+        = f.label :email, class: "form__label"
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "form__box"
+      .form__content
+        = f.label :name, class: "form__label"
+        = f.text_field :name, class: "form__box"
+      .form__content
+        = f.label :image, class: "form__label"
+        = f.file_field :image, class: "form__box__image"
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         %div
           Currently waiting confirmation for: #{resource.unconfirmed_email}
-      .field
-        = f.label :password
-        %i (leave blank if you don't want to change it)
-        %br/
-        = f.password_field :password, autocomplete: "new-password"
-        - if @minimum_password_length
-          %br/
-          %em
-            = @minimum_password_length
-            characters minimum
-      .field
-        = f.label :password_confirmation
-        %br/
-        = f.password_field :password_confirmation, autocomplete: "new-password"
-      .field
-        = f.label :current_password
-        %i (we need your current password to confirm your changes)
-        %br/
-        = f.password_field :current_password, autocomplete: "current-password"
-      .actions
-        = f.submit "Update"
-    %h3 Cancel my account
+      %i.form__comment 【変更しない場合は空白のまま】
+      .form__content
+        = f.label :password, class: "form__label"
+        = f.password_field :password, autocomplete: "new-password", class: "form__box"
+      .form__content
+        = f.label :password_confirmation, class: "form__label"
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: "form__box"
+      %i.form__comment 【現在のパスワードを入力してください】
+      .form__content
+        = f.label :current_password, class: "form__label"
+        = f.password_field :current_password, autocomplete: "current-password", class: "form__box"
+
+      .form__content
+        .form__button
+          = f.submit "情報を更新する"
+      .form__content
+        .form__link
+          = link_to "戻る", :back
+
+    %h3 アカウントを削除
     %p
-      Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+      ※注意※ 今までの内容が無くなってしまいます #{button_to "削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
 = link_to "Back", :back
