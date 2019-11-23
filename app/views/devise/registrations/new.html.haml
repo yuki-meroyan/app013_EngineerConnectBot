@@ -8,20 +8,20 @@
         = f.email_field :email, autofocus: true, autocomplete: "email", class: "form__box"
       .form__content
         = f.label :name, class: "form__label"
-        %br/
         = f.text_field :name, class: "form__box"
       .form__content
         = f.label :image, class: "form__label"
-        %br/
         = f.file_field :image, class: "form__box__image"
       .form__content
         = f.label :password, class: "form__label"
-        %br/
+        %i （6文字以上）
         = f.password_field :password, autocomplete: "new-password", class: "form__box"
       .form__content
         = f.label :password_confirmation, class: "form__label"
-        %br/
         = f.password_field :password_confirmation, autocomplete: "new-password", class: "form__box"
       .form__content
         .form__button
           = f.submit "ユーザーを登録する"
+      .form__content
+        .form__link
+          = render "devise/shared/links"
