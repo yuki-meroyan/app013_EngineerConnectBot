@@ -11,11 +11,7 @@
     %script{src: "https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"}
     %link{href: "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css", :rel => "stylesheet"}
   %body
+    = render partial: 'shared/header'
+    = render partial: 'shared/topMenu'
     = yield
-    .side
-      .side__menu
-        - if user_signed_in?
-          - if current_user.image.present?
-            = image_tag current_user.image.to_s, size: "100x100", alt: "test", class: "topPage__user__box--image"
-          - else
-            = image_tag 'NoImage.png', size: "100x100", alt: "test", class: "topPage__user__box--image"
+    = render partial: 'shared/footer'

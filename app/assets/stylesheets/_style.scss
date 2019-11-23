@@ -15,8 +15,8 @@ body {
 }
 /*トップページの設定*/
 body#top {
-	background: #fff url(../images/mainimg_s.jpg) no-repeat center 60px;	/*背景色と背景画像の読み込み（古いブラウザ用）*/
-	background: #fff url(../images/mainimg_l.jpg) no-repeat center 60px/auto 700px;	/*背景色と背景画像の読み込み。60pxというのはheaderの高さの事。autoは画像の幅、高さは700pxで指定。*/
+	// background: #fff url(../images/mainimg_s.jpg) no-repeat center 60px;	/*背景色と背景画像の読み込み（古いブラウザ用）*/
+	// background: #fff url(../images/mainimg_l.jpg) no-repeat center 60px/auto 700px;	/*背景色と背景画像の読み込み。60pxというのはheaderの高さの事。autoは画像の幅、高さは700pxで指定。*/
 }
 
 h1,h2,h3,h4,h5,p,ul,ol,li,dl,dt,dd,form,figure,form {margin: 0px;padding: 0px;font-size: 100%;}
@@ -50,6 +50,9 @@ header .inner {
 	width: 1000px;	/*幅*/
 	margin: 0 auto;
 	overflow: hidden;
+}
+header a{
+	text-decoration-line: none;
 }
 /*ロゴ画像*/
 #logo img {
