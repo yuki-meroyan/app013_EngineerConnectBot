@@ -30,15 +30,15 @@
       .form__content
         = f.label :current_password, class: "form__label"
         = f.password_field :current_password, autocomplete: "current-password", class: "form__box"
-
       .form__content
-        .form__button
-          = f.submit "情報を更新する"
+        = f.submit "情報を更新する", class: "form__button"
       .form__content
         .form__link
           = link_to "戻る", :back
-
-    %h3 アカウントを削除
-    %p
-      ※注意※ 今までの内容が無くなってしまいます #{button_to "削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+      .form__content
+        %h3 アカウントを削除
+      .form__content
+        %p
+          ※注意※ 今までの内容が無くなってしまいます
+      .form__content
+        = button_to "削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "form__button"
