@@ -24,6 +24,7 @@
       %li#topPage__myDetail.topPage__user__list
         %span.topPage__user__list--text
           自己管理
+        = fa_icon 'bars 1x', id: "myDeail", class: "fas fa-bars"
         .detail__lists.myDetail__lists
           - if user_signed_in?
             .detail__list.myDetail__list
@@ -45,6 +46,7 @@
       %li#topPage__otherDetail.topPage__user__list
         %span.topPage__user__list--text
           ユーザー
+        = fa_icon 'bars 1x', id: "otherDetail", class: "fas fa-bars"
         .detail__lists.otherDetail__lists
           .detail__list.otherDetail__list
             = link_to "ユーザーを検索", users_path
@@ -52,21 +54,25 @@
       %li#topPage__groupDetail.topPage__user__list
         %span.topPage__user__list--text
           グループ
+        = fa_icon 'bars 1x', id: "groupDetail", class: "fas fa-bars"
         .detail__lists.groupDetail__lists
           .detail__list.groupDetail__list
             = link_to 'グループを作成', new_group_path
+          .detail__list.groupDetail__list
+            = link_to 'グループを編集', engineer_connect_bots_have_group_path
           .detail__list.groupDetail__list
             = link_to 'グループを検索', groups_path
 
       %li#topPage__articleDetail.topPage__user__list
         %span.topPage__user__list--text
           投稿と依頼
+        = fa_icon 'bars 1x', id: "articleDetail", class: "fas fa-bars"
         .detail__lists.articleDetail__lists
           .detail__list.articleDetail__list
             = link_to '記事を検索する', engineer_connect_bots_search_path
           .detail__list.articleDetail__list
             = link_to '記事を投稿する', engineer_connect_bots_article_path
-            
+
   .topPage__contents
     .topPage__content
       ああああああ

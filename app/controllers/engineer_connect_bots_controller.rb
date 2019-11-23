@@ -20,4 +20,9 @@ class EngineerConnectBotsController < ApplicationController
 
   end
 
+  def have_group
+    @groups = current_user.groups
+  end
+
+
 end
