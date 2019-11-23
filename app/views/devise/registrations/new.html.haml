@@ -14,14 +14,13 @@
         = f.file_field :image, class: "form__box__image"
       .form__content
         = f.label :password, class: "form__label"
-        %i （6文字以上）
         = f.password_field :password, autocomplete: "new-password", class: "form__box"
+      %i.form__comment 【※6文字以上】
       .form__content
         = f.label :password_confirmation, class: "form__label"
         = f.password_field :password_confirmation, autocomplete: "new-password", class: "form__box"
       .form__content
-        .form__button
-          = f.submit "ユーザーを登録する"
+        = f.submit "ユーザーを登録する", class: "form__button"
       .form__content
         .form__link
           = render "devise/shared/links"
