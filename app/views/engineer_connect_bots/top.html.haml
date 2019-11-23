@@ -1,58 +1,59 @@
 
-#topPage
-  .topPage__header
-    .topPage__header__title
-      Engineer Connect Bot
-    .topPage__header__title
-      〜 エンジニアと繋がりたいを叶える 〜
-  .topPage__contents
-    - if user_signed_in?
-      = image_tag current_user.image.to_s, size: "100x100", alt: "test"
-      .topPage__content
-        = link_to "ユーザー編集", edit_user_registration_path
-      .topPage__content
-        = link_to "ユーザー詳細登録", new_user_details_path
-      .topPage__content
-        = link_to "詳細を編集", edit_user_details_path
-      .topPage__content
-        = link_to "詳細を確認", user_details_path
-      .topPage__content
-        = link_to "ログアウト", destroy_user_session_path, method: :delete
-    - else
-      .topPage__content
-        = link_to "ログイン", new_user_session_path
-      .topPage__content
-        = link_to "ユーザーを作成", new_user_registration_path
-    .topPage__content
-      = link_to "ユーザーを検索", users_path
-    .topPage__content
-      = link_to 'グループを作成', new_group_path
-    .topPage__content
-      = link_to 'グループを検索', groups_path
-    .topPage__content
-      = link_to '記事を検索する', engineer_connect_bots_search_path
 
-    .topPage__content
-      = link_to "上級者カテゴリー一覧", seniors_path
-    .topPage__content
-      = link_to "上級者カテゴリー作成", new_senior_path
-    .topPage__content
-      = link_to "上級者カテゴリー編集", edit_senior_path(id: 1)
-    .topPage__content
-      = link_to "上級者カテゴリー確認", senior_path(id: 1)
+.topPage__contents
+  .topPage__content
 
-    .topPage__content
-      = link_to "中級者カテゴリー一覧", intermediates_path
-    .topPage__content
-      = link_to "中級者カテゴリー作成", new_intermediate_path
-    .topPage__content
-      = link_to "中級者カテゴリー編集", edit_intermediate_path(id: 1)
-    .topPage__content
-      = link_to "中級者カテゴリー確認", intermediate_path(id: 1)
+  -# %ul.topPage__user__menu
+  -#   %li#topPage__myDetail.topPage__user__list
+  -#     %span.topPage__user__list--text
+  -#       自己管理
+  -#     = fa_icon 'bars 1x', id: "myDeail", class: "fas fa-bars"
+  -#     .detail__lists.myDetail__lists
+  -#       - if user_signed_in?
+  -#         .detail__list.myDetail__list
+  -#           = link_to "ユーザー編集", edit_user_registration_path
+  -#         .detail__list.myDetail__list
+  -#           = link_to "詳細登録", new_user_details_path
+  -#         .detail__list.myDetail__list
+  -#           = link_to "詳細編集", edit_user_details_path
+  -#         .detail__list.myDetail__list
+  -#           = link_to "詳細確認", user_details_path
+  -#         .detail__list.myDetail__list
+  -#           = link_to "ログアウト", destroy_user_session_path, method: :delete
+  -#       - else
+  -#         .detail__list.myDetail__list
+  -#           = link_to "ユーザー作成", new_user_registration_path
+  -#         .detail__list.myDetail__list
+  -#           = link_to "ログイン", new_user_session_path
 
-    .topPage__content
-      = link_to "初級者カテゴリー作成", new_beginner_path
-    .topPage__content
-      = link_to "初級者カテゴリー編集", edit_beginner_path(id: 1)
-    .topPage__content
-      = link_to "初級者カテゴリー確認", beginners_path
+  -#   %li#topPage__otherDetail.topPage__user__list
+  -#     %span.topPage__user__list--text
+  -#       ユーザー
+  -#     = fa_icon 'bars 1x', id: "otherDetail", class: "fas fa-bars"
+  -#     .detail__lists.otherDetail__lists
+  -#       .detail__list.otherDetail__list
+  -#         = link_to "ユーザーを検索", users_path
+
+  -#   %li#topPage__groupDetail.topPage__user__list
+  -#     %span.topPage__user__list--text
+  -#       グループ
+  -#     = fa_icon 'bars 1x', id: "groupDetail", class: "fas fa-bars"
+  -#     .detail__lists.groupDetail__lists
+  -#       .detail__list.groupDetail__list
+  -#         = link_to 'グループを作成', new_group_path
+  -#       .detail__list.groupDetail__list
+  -#         = link_to 'グループを編集', engineer_connect_bots_have_group_path
+  -#       .detail__list.groupDetail__list
+  -#         = link_to 'グループを検索', groups_path
+
+  -#   %li#topPage__articleDetail.topPage__user__list
+  -#     %span.topPage__user__list--text
+  -#       投稿と依頼
+  -#     = fa_icon 'bars 1x', id: "articleDetail", class: "fas fa-bars"
+  -#     .detail__lists.articleDetail__lists
+  -#       .detail__list.articleDetail__list
+  -#         = link_to '記事を検索する', engineer_connect_bots_search_path
+  -#       .detail__list.articleDetail__list
+  -#         = link_to '記事を投稿する', engineer_connect_bots_article_path
+
+

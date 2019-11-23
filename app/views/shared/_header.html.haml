@@ -1,0 +1,23 @@
+%header.header
+  .inner
+    %h1#logo
+      = link_to root_path do
+        .topPage__header__title
+          %span.topPage__header__title--text
+            Engineer Connect Bot
+        .topPage__header__title
+          %span.topPage__header__title--subtext
+            〜 エンジニアと繋がりたいを叶える 〜
+    .topPage__user
+      - if user_signed_in?
+        .topPage__user__box
+          %p.topPage__user__box--text
+            ようこそ
+          .topPage__user__box__name
+            %p
+              = current_user.name
+          %p.topPage__user__box--text
+            さん
+    - if user_signed_in?
+      - if current_user.image.present?
+        = image_tag current_user.image.to_s, size: "100x100", alt: "test", class: "topPage__user__box--image"

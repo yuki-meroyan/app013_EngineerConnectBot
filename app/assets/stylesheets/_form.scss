@@ -1,0 +1,46 @@
+.form{
+  width: 100%;
+  margin-top: 20px;
+
+  h2{
+    margin: 20px;
+    text-align: center;
+    font-size: 20px;
+  }
+  &__contents{
+    width: 550px;
+    margin: 0 auto;
+  }
+
+  &__content{
+    display: flex;
+    margin: 5px 20px;
+  }
+
+  &__comment{
+    margin-left: 20px;
+  }
+  &__label{
+    display: inline-block;
+    width: 200px;
+  }
+  &__box{
+    width: 280px;
+
+    &__image{
+      width: 280px;
+    }
+  }
+  &__button{
+    width: 250px;
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  &__check{
+    margin: 10px;
+  }
+  &__link{
+
+  }
+}

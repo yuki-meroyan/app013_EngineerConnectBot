@@ -46,6 +46,8 @@ $(function(){
           appendErrMsgToHTML("ユーザー検索に失敗しました");
         }
       })
+    } else {
+      $('#search__user__result').empty();
     }
   });
 });

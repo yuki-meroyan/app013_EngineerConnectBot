@@ -16,4 +16,13 @@ class EngineerConnectBotsController < ApplicationController
     @seniors = @senior.result(distinct: true)
   end
 
+  def article
+
+  end
+
+  def have_group
+    @groups = current_user.groups
+  end
+
+
 end
