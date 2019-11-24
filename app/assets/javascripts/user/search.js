@@ -1,6 +1,6 @@
 $(function(){
 
-  var user_list = $("#search__user__result");
+  var user_list = $("#form__search__result");
 
   function appendUser(user){
     var html = `<div class="search__user clearfix">
