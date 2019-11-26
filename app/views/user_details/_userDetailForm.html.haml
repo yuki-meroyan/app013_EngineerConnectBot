@@ -1,0 +1,53 @@
+
+= form_with(model: user_detail, local: true) do |f|
+  .form__content
+    = f.label :title, class: "form__label" do
+      タイトル
+    = f.text_field :title, class: "form__box", placeholder: 'タイトルを入力してください'
+  .form__content
+    = f.label :category, class: "form__label" do
+      カテゴリー
+    = f.text_field :category, class: "form__box", placeholder: 'カテゴリーを入力してください'
+  .form__content
+    = f.label :language, class: "form__label" do
+      言語
+    = f.text_field :language, class: "form__box", placeholder: '使用可能な言語を入力してください'
+  .form__content
+    = f.label :recruit_member, class: "form__label" do
+      募集人数
+    = f.text_field :recruit_member, class: "form__box", placeholder: '最低1人以上にしてください'
+  .form__content
+    = f.label :detail, class: "form__label" do
+      詳細
+    = f.text_area :detail, class: "form__box", placeholder: '詳細を入力してください'
+  .form__content
+    = f.label :entry_period, class: "form__label" do
+      申込締切期限
+    = f.text_field :entry_period, id: "entry_period", class: "form__calendar"
+  .form__content
+    = f.label :work_period, class: "form__label" do
+      開発締切期限
+    = f.text_field :work_period, id: "work_period", class: "form__calendar"
+  .form__content
+    = f.submit text, class: "form__button"
+
+= form_with(model: @user_detail, local: true) do |f|
+  = f.label :family_name do
+    family_name
+    = f.text_field :family_name
+  = f.label :first_name do
+    first_name
+    = f.text_field :first_name
+  = f.label :address do
+    address
+    = f.collection_select :address, Prefecture.all, :name, :name, {}, class: 'test'
+  = f.label :level do
+    level
+    = f.select :level, ["初級者","中級者","上級者"]
+  = f.label :language do
+    language
+    = f.text_field :language
+  = f.label :detail do
+    detail
+    = f.text_area :detail
+  = f.submit "登録する",type: "submit"
