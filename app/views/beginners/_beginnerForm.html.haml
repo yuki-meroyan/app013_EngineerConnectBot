@@ -1,0 +1,19 @@
+= form_with(model: beginner, local: true) do |f|
+  .form__content
+    = f.label :title, class: "form__label" do
+      タイトル
+    = f.text_field :title, class: "form__box", placeholder: 'タイトルを入力してください'
+  .form__content
+    = f.label :category, class: "form__label" do
+      カテゴリー
+    = f.text_field :category, class: "form__box", placeholder: 'カテゴリーを入力してください'
+  .form__content
+    = f.label :language, class: "form__label" do
+      言語
+    = f.text_field :language, class: "form__box", placeholder: '使用可能な言語を入力してください'
+  .form__content
+    = f.label :detail, class: "form__label" do
+      詳細
+    = f.text_area :detail, class: "form__box", placeholder: '詳細を入力してください'
+  .form__content
+    = f.submit text, class: "form__button"
