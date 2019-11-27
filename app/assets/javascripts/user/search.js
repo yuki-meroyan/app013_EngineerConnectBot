@@ -1,6 +1,6 @@
 $(function(){
 
-  var user_list = $("#search__user__result");
+  var user_list = $("#form__search__result");
 
   function appendUser(user){
     var html = `<div class="search__user clearfix">
@@ -36,7 +36,7 @@ $(function(){
       dataType: 'json'
       })
       .done(function(users) {
-        $('#search__user__result').empty();
+        $('#form__search__result').empty();
         if (users.length !== 0) {
           users.forEach(function(user){
           appendUser(user);
@@ -47,7 +47,7 @@ $(function(){
         }
       })
     } else {
-      $('#search__user__result').empty();
+      $('#form__search__result').empty();
     }
   });
 });

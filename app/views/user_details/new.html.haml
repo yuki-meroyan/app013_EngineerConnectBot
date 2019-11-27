@@ -1,20 +1,4 @@
-= form_with(model: @user_detail, local: true) do |f|
-  = f.label :family_name do
-    family_name
-    = f.text_field :family_name
-  = f.label :first_name do
-    first_name
-    = f.text_field :first_name
-  = f.label :address do
-    address
-    = f.collection_select :address, Prefecture.all, :name, :name, {}, class: 'test'
-  = f.label :level do
-    level
-    = f.select :level, ["初級者","中級者","上級者"]
-  = f.label :language do
-    language
-    = f.text_field :language
-  = f.label :detail do
-    detail
-    = f.text_area :detail
-  = f.submit "登録する",type: "submit"
+.form
+  .form__contents
+    %h2 ユーザー詳細登録
+    = render 'userDetailForm', { user_detail: @user_detail, text: "登録する"}

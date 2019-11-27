@@ -1,21 +1,20 @@
 #menu-box.nav-fix-pos
-  / PC用（481px以上端末）メニュー
   %nav#menubar
     %ul
       %li.menuimg.menu1
-        = link_to '自己管理', root_path
+        = link_to 'マイページ', root_path
         - if user_signed_in?
           %ul.ddmenu
             %li
               = link_to 'ユーザー編集', edit_user_registration_path
             - if current_user.user_detail.present?
               %li
-                = link_to '詳細編集', edit_user_details_path
+                = link_to '詳細編集', edit_user_detail_path(current_user)
               %li
-                = link_to '詳細確認', user_details_path
+                = link_to '詳細確認', user_detail_path(current_user)
             - else
               %li
-                = link_to '詳細登録', new_user_details_path
+                = link_to '詳細登録', new_user_detail_path
             %li
               = link_to 'ログアウト', destroy_user_session_path, method: :delete
         - else
@@ -45,4 +44,4 @@
           %li
             = link_to '記事を検索する', engineer_connect_bots_search_path
           %li
-            = link_to '記事を投稿する', engineer_connect_bots_article_path
+            = link_to '記事を投稿する', engineer_connect_bots_article_post_path

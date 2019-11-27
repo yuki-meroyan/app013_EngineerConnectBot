@@ -1,0 +1,23 @@
+
+= form_with(model: group, local: true) do |f|
+  .form__content
+    = f.label :name, class: "form__label"
+    = f.text_field :name, class: "form__box", placeholder: '  グループ名を入力してください'
+  .form__content
+    = f.label :master, class: "form__label"
+    = current_user.name
+    = f.text_field :master, value: current_user.id, class: "form__box", hidden: true
+    = f.text_field :master_name, value: current_user.name, class: "form__box", hidden: true
+  .form__content
+    = f.label :detail, class: "form__label"
+    = f.text_area :detail, class: "form__box", placeholder: '  グループの詳細を入力してください'
+  .form__content
+    = f.submit class: "form__button"
+    -# %label.chat-group-form__label{for: "chat_group_チャットメンバーを追加"} チャットメンバーを追加
+    -# %input#user-search-field.chat-group-form__input{placeholder: " 追加したいユーザー名を入力してください", type: "text"}/
+    -# %label.chat-group-form__label{:for => "chat_group_チャットメンバー"} チャットメンバー
+    -# - @group.users.each do |user|
+    -# %input{id: "group_user_ids", name: "group[user_ids][]", type: "hidden", value: user.id}/
+    -# = user.name
+    -# - if user.id != current_user.id
+    -#   削除

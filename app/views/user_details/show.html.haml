@@ -1,17 +1,37 @@
-family_name
-= @user_detail.family_name
-%br/
-first_name
-= @user_detail.first_name
-%br/
-address
-= @user_detail.address
-%br/
-level
-= @user_detail.level
-%br/
-language
-= @user_detail.language
-%br/
-detail
-= @user_detail.detail
+.form
+  .form__contents
+    %h2 ユーザー詳細
+    .form__content
+      = image_tag @user_detail.user.image.url, class: "form__image"
+    .form__content
+      .form__label
+        氏
+      = @user_detail.family_name
+    .form__content
+      .form__label
+        名
+      = @user_detail.first_name
+    .form__content
+      .form__label
+        住所
+      = @user_detail.address
+    .form__content
+      .form__label
+        対象レベル
+      = @user_detail.level
+    .form__content
+      .form__label
+        言語
+      = @user_detail.language
+    .form__content
+      .form__label
+        自己PR
+      = @user_detail.detail
+    .form__content
+      .form__label
+        言語
+      = @user_detail.detail
+    - if @user_detail.user_id == current_user.id
+      .form__content
+        %button.button.form__button
+          = link_to "編集する", edit_user_detail_path(current_user), class: ""

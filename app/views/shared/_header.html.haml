@@ -20,4 +20,4 @@
             さん
     - if user_signed_in?
       - if current_user.image.present?
-        = image_tag current_user.image.to_s, size: "100x100", alt: "test", class: "topPage__user__box--image"
+        = image_tag current_user.image.to_s, alt: "test", class: "topPage__user__box--image"

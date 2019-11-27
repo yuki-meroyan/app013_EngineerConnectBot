@@ -1,23 +1,27 @@
-= form_with(model: @intermediate, local: true) do |f|
-  = f.label :title do
-    title
-    = f.text_field :title
-  = f.label :category do
-    category
-    = f.text_field :category
-  = f.label :language do
-    language
-    = f.text_field :language
-  = f.label :detail do
-    detail
-    = f.text_area :detail
-  = f.label :entry_period do
-    entry_period
-    = f.text_field :entry_period, id: "entry_period"
-  = f.label :work_period do
-    work_period
-    = f.text_field :work_period, id: "work_period"
-  = f.label :recruit_member do
-    recruit_member
-    = f.text_field :recruit_member
-  = f.submit "更新する",type: "submit"
+.form
+  .form__contents
+    %h2 中級者カテゴリー編集
+    = render 'intermediateForm', { intermediate: @intermediate, text: "更新する"}
+-# = form_with(model: @intermediate, local: true) do |f|
+-#   = f.label :title do
+-#     title
+-#     = f.text_field :title
+-#   = f.label :category do
+-#     category
+-#     = f.text_field :category
+-#   = f.label :language do
+-#     language
+-#     = f.text_field :language
+-#   = f.label :detail do
+-#     detail
+-#     = f.text_area :detail
+-#   = f.label :entry_period do
+-#     entry_period
+-#     = f.text_field :entry_period, id: "entry_period"
+-#   = f.label :work_period do
+-#     work_period
+-#     = f.text_field :work_period, id: "work_period"
+-#   = f.label :recruit_member do
+-#     recruit_member
+-#     = f.text_field :recruit_member
+-#   = f.submit "更新する",type: "submit"

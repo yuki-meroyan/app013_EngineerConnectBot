@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
 
   def index
     @group = Group.ransack(params[:q])
-    @groups = @group.result(distinct: true)
+    @groups = @group.result(distinct: true).includes(:users)
   end
 
   def new
@@ -35,7 +35,7 @@ class GroupsController < ApplicationController
   protected
 
   def group_params
-    params.require(:group).permit(:name, { user_ids: [] } )
+    params.require(:group).permit(:name, :master, :detail, { user_ids: [] } )
   end
 
   def set_group

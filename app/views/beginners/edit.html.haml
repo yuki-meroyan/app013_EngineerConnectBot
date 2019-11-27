@@ -1,14 +1,18 @@
-= form_with(url: beginner_path, model: @beginner, method: :patch, local: true) do |f|
-  = f.label :title do
-    title
-    = f.text_field :title
-  = f.label :category do
-    category
-    = f.text_field :category
-  = f.label :language do
-    language
-    = f.text_field :language
-  = f.label :detail do
-    detail
-    = f.text_area :detail
-  = f.submit "更新する",type: "submit"
+.form
+  .form__contents
+    %h2 初級者カテゴリー投稿
+    = render 'beginnerForm', { beginner: @beginner, text: "更新する"}
+-# = form_with(model: @beginner, local: true) do |f|
+-#   = f.label :title do
+-#     title
+-#     = f.text_field :title
+-#   = f.label :category do
+-#     category
+-#     = f.text_field :category
+-#   = f.label :language do
+-#     language
+-#     = f.text_field :language
+-#   = f.label :detail do
+-#     detail
+-#     = f.text_area :detail
+-#   = f.submit "更新する",type: "submit"

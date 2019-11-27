@@ -1,10 +1,28 @@
-= search_form_for @group, class: "mb-5" do |f|
-  .search__form__contents
-    = f.label :name_cont, 'グループ名', class: 'col-sm-2 col-form-label'
-    .search__form__content
-      = f.search_field :name_cont, class: 'form-control'
-  .search__form__btn
-    = f.submit class: 'btn btn-outline-primary'
-  - if @groups.present?
-    - @groups.each do |group|
-      = group.name
+.form
+  .form__contents
+    = search_form_for @group, class: "mb-5" do |f|
+      .form__search__content
+        = f.label :name_cont, 'グループ名', class: "form__search__label"
+        = f.search_field :name_cont, class: "form__search__box", placeholder: "検索したいグループ名を入力してください", type: "text"
+      .form__content
+        = f.submit class: "form__button"
+      .form__content
+        - if @groups.present?
+          %table.group__tables
+            %tr.group__table
+              %th グループ名
+              %th 作成日
+              %th 人数
+            - @groups.each do |group|
+              %tr.group__table
+                %td
+                  = link_to group.name, group_path(group.id)
+                %td
+                  = group.created_at.strftime('%Y年%m月%d日')
+                %td
+                  = group.users.length
+                  人
+
+
+.search__form__contents
+  .search__form__content

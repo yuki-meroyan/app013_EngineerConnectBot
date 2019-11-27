@@ -1,23 +1,27 @@
-= form_with(model: @senior, local: true) do |f|
-  = f.label :title do
-    title
-    = f.text_field :title
-  = f.label :category do
-    category
-    = f.text_field :category
-  = f.label :language do
-    language
-    = f.text_field :language
-  = f.label :detail do
-    detail
-    = f.text_area :detail
-  = f.label :price do
-    price
-    = f.text_field :price
-  = f.label :entry_period do
-    entry_period
-    = f.text_field :entry_period, id: "entry_period"
-  = f.label :work_period do
-    work_period
-    = f.text_field :work_period, id: "work_period"
-  = f.submit "更新する",type: "submit"
+.form
+  .form__contents
+    %h2 上級者カテゴリー編集
+    = render 'seniorForm', { senior: @senior, text: "更新する"}
+-# = form_with(model: @senior, local: true) do |f|
+-#   = f.label :title do
+-#     title
+-#     = f.text_field :title
+-#   = f.label :category do
+-#     category
+-#     = f.text_field :category
+-#   = f.label :language do
+-#     language
+-#     = f.text_field :language
+-#   = f.label :detail do
+-#     detail
+-#     = f.text_area :detail
+-#   = f.label :price do
+-#     price
+-#     = f.text_field :price
+-#   = f.label :entry_period do
+-#     entry_period
+-#     = f.text_field :entry_period, id: "entry_period"
+-#   = f.label :work_period do
+-#     work_period
+-#     = f.text_field :work_period, id: "work_period"
+-#   = f.submit "更新する",type: "submit"
