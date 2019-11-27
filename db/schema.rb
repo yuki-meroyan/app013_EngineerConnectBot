@@ -45,7 +45,8 @@ ActiveRecord::Schema.define(version: 2019_11_16_103057) do
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "master"
+    t.integer "master", null: false
+    t.string "master_name", null: false
     t.text "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
