@@ -6,7 +6,8 @@
   .form__content
     = f.label :master, class: "form__label"
     = current_user.name
-    = f.text_field :master, value: current_user.id, class: "form__box", placeholder: '  グループ名を入力してください', hidden: true
+    = f.text_field :master, value: current_user.id, class: "form__box", hidden: true
+    = f.text_field :master_name, value: current_user.name, class: "form__box", hidden: true
   .form__content
     = f.label :detail, class: "form__label"
     = f.text_area :detail, class: "form__box", placeholder: '  グループの詳細を入力してください'
