@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/engineer_connect_bots/search', to: 'engineer_connect_bots#search'
   get '/engineer_connect_bots/article', to: 'engineer_connect_bots#article'
   get '/engineer_connect_bots/have_group', to: 'engineer_connect_bots#have_group'
-  resource  :user_details
+  resources :user_details
   resources :users
   resources :beginners
   resources :intermediates
