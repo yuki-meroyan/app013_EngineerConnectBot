@@ -53,6 +53,9 @@
     margin: 0 auto;
     margin-top: 15px;
     margin-bottom: 15px;
+    a{
+      text-decoration-line: none;
+    }
   }
   &__check{
     margin: 10px;
@@ -87,8 +90,12 @@
     &__box{
 
     }
-
   }
+
+  &__image{
+    margin: 0 auto;
+  }
+
   &__calendar{
     width: 250px;
   }
