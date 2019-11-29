@@ -3,27 +3,32 @@
     - if @groups.present?
       %table.article__category__contents
         %tr.article__category__content
-          %th.article__heading.article__category__content.article__category__content--title
+          %td.article__heading.article__category__content.article__category__content--title
             グループ名
-          %td.article__heading.article__category__content.article__category__content--detail
+          %td.article__heading.article__category__content.article__category__content--master
             管理者
-          %td.article__heading.article__category__content.article__category__content--createTime
+          %td.article__heading.article__category__content.article__category__content--members
             所属人数
-          %td.article__heading.article__category__content
+          %td.article__heading.article__category__content.article__category__content--detail
+            詳細
+          %td.article__heading.article__category__content.article__category__content--link
             リンク
       %table.article__category__contents
         - @groups.each do |group|
           %tr.article__category__content
-            %th.article__category__content.article__category__content--title
-              = link_to group.name, edit_group_path(group.id)
-            %th.article__category__content.article__category__content--title
-              = group.master_name.name
-            %td.article__category__content.article__category__content--detail
-              = group.groupUsers.count
+            %td.article__category__content.article__category__content--title
+              - if group.master == current_user.id
+                = link_to group.name, edit_group_path(group.id), class: "article__category__content--link"
+              - else
+                = link_to group.name
+            %td.article__category__content.article__category__content--master
+              = link_to group.master_name, user_path(id: group.master), class: "article__category__content--link"
+            %td.article__category__content.article__category__content--members
+              = group.users.count
               人
-            %td.article__category__content.article__category__content--createTime
-              = group.created_at.strftime('%Y年%m月%d日')
+            %td.article__category__content.article__category__content--detail
+              = group.detail
             %td.article__category__content
-              -# = link_to "詳細確認", beginner_path(id: article.id), class: "article__category__content--link"
+              = link_to "詳細確認", group_path(id: group.id), class: "article__category__content--link"
     - else
       グループに所属していません
