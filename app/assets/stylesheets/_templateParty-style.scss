@@ -102,7 +102,7 @@ header a{
 	width: 50px;	/*幅*/
 	height: 50px;	/*高さ*/
 	display: inline-block;
-	background-image: url(../images/icon_menu.png);	/*背景画像の読み込み*/
+	// background-image: url(../images/icon_menu.png);	/*背景画像の読み込み*/
 	background-repeat: no-repeat;
 	background-size: 50px 200px;	/*背景画像のサイズ。※実寸は100pxと400pxだが、高解像度の端末用に50%のサイズで指定している。*/
 }
