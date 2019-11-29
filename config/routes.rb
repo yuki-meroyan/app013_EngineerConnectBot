@@ -9,9 +9,14 @@ Rails.application.routes.draw do
   get '/engineer_connect_bots/article_mine', to: 'engineer_connect_bots#article_mine'
   get '/engineer_connect_bots/have_group', to: 'engineer_connect_bots#have_group'
   resources :user_details
-  resources :users
+  resources :users do
+    member do
+      get :followed, :followers
+    end
+  end
   resources :beginners
   resources :intermediates
   resources :seniors
   resources :groups
+  resources :relationships, only: [:create, :destroy]
 end
