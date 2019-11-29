@@ -88,7 +88,40 @@
       }
     }
     &__box{
+    }
+    &__image{
+      width: 70px;
+      height: auto;
+    }
+    &__name{
+      width: 120px;
+      padding-left: 20px;
+      display: inline-block;
+    }
+    &__result{
+      margin: 20px 0 0 0;
 
+      &__box{
+        margin-bottom: 10px;
+      }
+    }
+    &__button{
+      display: inline-block;
+    }
+
+    &__button:hover{
+      cursor: pointer;
+    }
+
+    &__user{
+      &__contents{
+        width: 100%;
+        margin-top: 30px;
+      }
+      &__content{
+        margin: 0 auto;
+        width: 300px;
+      }
     }
   }
 
