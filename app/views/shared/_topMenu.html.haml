@@ -12,6 +12,8 @@
                 = link_to '詳細編集', edit_user_detail_path(current_user)
               %li
                 = link_to '詳細確認', user_detail_path(current_user)
+              %li
+                = link_to '友達確認', user_path(current_user)
             - else
               %li
                 = link_to '詳細登録', new_user_detail_path
