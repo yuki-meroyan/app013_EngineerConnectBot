@@ -1,30 +1,19 @@
 $(function(){
+  var user_search_list = $('#form__search__user__result')
 
-  var user_list = $("#form__search__result");
-
-  function appendUser(user){
-    var html = `<div class="search__user clearfix">
-                  <img alt="test" src=${user.user_image.url} width="100" height="100">
-                  <p class="search__user__name">${user.user_name}</p>
-                  <div class="search__user__add" data-user-id="${user.user_id}" data-user-name="${user.user_name}">追加</div>
+  function appendSearchUser(user){
+    var html = `<div class="form__search__result__box">
+                  <img class="form__search__image" src="${user.user_image.url}">
+                  <div class="form__search__name">
+                    ${user.user_name}
+                  </div>
                 </div>
                 `
-    user_list.append(html);
-  }
-
-  function appendErrMsgToHTML(msg){
-    var html = `<div class="search__user clearfix">
-                  <p class="search__user__name">
-                    ${msg}
-                  </p>
-                </div>
-                `
-    user_list.append(html);
+    user_search_list.append(html);
   }
 
   $('#search__user__field').on('keyup', function(){
     var input = $("#search__user__field").val();
-    // var users = [];
     if (input.length !== 0) {
       $.ajax({
       type: 'GET',
@@ -36,10 +25,10 @@ $(function(){
       dataType: 'json'
       })
       .done(function(users) {
-        $('#form__search__result').empty();
+        $('#form__search__user__result').empty();
         if (users.length !== 0) {
           users.forEach(function(user){
-          appendUser(user);
+            appendSearchUser(user);
           });
         }
         else {
@@ -47,7 +36,7 @@ $(function(){
         }
       })
     } else {
-      $('#form__search__result').empty();
+      $('#form__search__user__result').empty();
     }
   });
-});
+})
