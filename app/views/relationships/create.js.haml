@@ -1,0 +1,6 @@
+$("#user_#{@user.id}").html("#{j(render('users/follow_form', user: @user))}")
+$("#followers").html('#{@user.followers.count}')
+
+
+
+
