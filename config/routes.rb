@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :beginners
   resources :intermediates
   resources :seniors
-  resources :groups
+  resources :groups do
+    resources :group_messages
+  end
   resources :relationships, only: [:create, :destroy]
 end
