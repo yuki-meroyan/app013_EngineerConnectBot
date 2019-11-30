@@ -1,6 +1,6 @@
 class UserDetailsController < ApplicationController
   before_action :user_detail_params, only: [:create, :update]
-  before_action :set_user_detail   , only: [:edit  , :update, :show]
+  before_action :set_user_detail   , only: [:edit  , :update]
 
   def new
     @user_detail = UserDetail.new
@@ -16,6 +16,10 @@ class UserDetailsController < ApplicationController
   end
 
   def show
+    @user_detail = UserDetail.find_by(user_id: params[:id])
+    unless @user_detail.present?
+      redirect_to users_path, notice: '該当のユーザーは詳細の登録がありません'
+    end
 
   end
 

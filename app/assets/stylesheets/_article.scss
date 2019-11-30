@@ -27,7 +27,7 @@
       border-top: 1px solid rgb(148, 204, 147);
       border-bottom: 1px solid rgb(148, 204, 147);
       box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
-      width: 25%;
+      width: 20%;
       padding: 10px 0;
     }
 
@@ -57,27 +57,33 @@
       padding: 5px 10px;
       border-radius: 5px;
       &--title{
-        min-width: 120px;
+        max-width: 120px;
         color: green;
       }
+      &--master{
+        max-width: 80px;
+      }
       &--category{
-        min-width: 60px;
+        max-width: 60px;
       }
       &--detail{
-        min-width: 300px;
+        max-width: 300px;
         overflow: hidden;
       }
       &--createTime{
-        min-width: 110px;
+        max-width: 110px;
+      }
+      &--members{
+        min-width: 20px;
       }
       &--link{
-        min-width: 140px;
+        max-width: 140px;
         text-decoration-line: none;
       }
     }
   }
   &__content{
-    width: 200px;
+    width: 300px;
     margin: 0 60px;
     text-align: center;
     justify-content: space-between;

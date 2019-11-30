@@ -12,12 +12,25 @@
     = f.label :detail, class: "form__label"
     = f.text_area :detail, class: "form__box", placeholder: '  グループの詳細を入力してください'
   .form__content
+    %label.form__label{for: "chat_group_チャットメンバーを追加"} グループメンバーを追加
+    %input#search__user__field.form__box{placeholder: "  追加したいユーザー名を入力してください", type: "text"}
+  .form__content
+    .form__label
+    #form__search__result
+
+  .form__content
+    .form__label
+      参加者
+    #form__group__users
+      - @group.users.each do |user|
+        .form__search__result__box
+          %input{id: "group_user_ids", name: "group[user_ids][]", type: "hidden", value: user.id}
+          = image_tag user.image.url, class: "form__search__image"
+          .form__search__name
+            = user.name
+          - if user.id != current_user.id
+            #form__remove__button.form__search__button.button
+              削除
+
+  .form__content
     = f.submit class: "form__button"
-    -# %label.chat-group-form__label{for: "chat_group_チャットメンバーを追加"} チャットメンバーを追加
-    -# %input#user-search-field.chat-group-form__input{placeholder: " 追加したいユーザー名を入力してください", type: "text"}/
-    -# %label.chat-group-form__label{:for => "chat_group_チャットメンバー"} チャットメンバー
-    -# - @group.users.each do |user|
-    -# %input{id: "group_user_ids", name: "group[user_ids][]", type: "hidden", value: user.id}/
-    -# = user.name
-    -# - if user.id != current_user.id
-    -#   削除

@@ -47,7 +47,7 @@ class EngineerConnectBotsController < ApplicationController
   end
 
   def have_group
-    @groups = Group.where(master: current_user.id)
+
   end
 
 

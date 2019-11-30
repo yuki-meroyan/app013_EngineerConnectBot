@@ -1,0 +1,6 @@
+- @users.each do |user|
+  %table
+    %tr
+      %td
+        = user.username
+      %td= link_to '詳細', user_path(user)
