@@ -5,7 +5,7 @@
         .group__message__content.position-right
           .group__message__text.group__message__text--right
             = group_message.text
-      .group__message__content
+      .group__message__content.position-right
         = image_tag group_message.image.url, class: 'group__message__image' if group_message.image.present?
 
     .group__message__user
