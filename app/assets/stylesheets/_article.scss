@@ -3,6 +3,7 @@
     width: 1100px;
     margin:  0 auto;
     margin-top: 50px;
+    margin-bottom: 50px;
   }
 
   &__heading{
@@ -58,7 +59,7 @@
       border-radius: 5px;
       &--title{
         max-width: 120px;
-        color: green;
+        font-weight: bold;
       }
       &--master{
         max-width: 80px;

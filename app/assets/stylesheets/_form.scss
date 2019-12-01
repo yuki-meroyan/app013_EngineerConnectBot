@@ -136,3 +136,29 @@
   }
 }
 
+.message{
+  &__form{
+
+    &__box{
+      display: flex;
+      margin: 20px 0 10px 0;
+      input[type="text"]{
+        width: 450px;
+        margin-left: 50px;
+        margin-right: 10px;
+      }
+    }
+    &__text{
+      width: 400px;
+    }
+    &__image{
+
+      &__file{
+
+      }
+    }
+    &__btn{
+
+    }
+  }
+}

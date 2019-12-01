@@ -1,0 +1,177 @@
+.group-content{
+  width: 100%;
+  display: flex;
+  min-height: 600px;
+  max-height: 1000px;
+  overflow: scroll;
+
+  a{
+    text-decoration-line: none;
+  }
+
+  .group{
+    &__side{
+      width: 300px;
+      height: 600px;
+      &__content{
+      }
+    }
+
+    &__box{
+      margin: 10px 15px 0 15px;
+      padding: 10px 10px 0 10px;
+      border: 2px solid $box-color;
+      // border-style: outset;
+      border-radius: 5px;
+      background-color: $box-color;
+      max-height: 120px;
+      overflow: hidden;
+    }
+
+    &__name{
+      font-size: 17px;
+    }
+
+    &__message{
+      margin-left: 10px;
+    }
+
+    &__main{
+      width: calc(100% - 350px);
+
+      .group{
+        &__header{
+          &__box{
+            font-size: 12px;
+            padding: 10px;
+          }
+        }
+        &__name{
+          display: inline-block;
+          margin-left: 20px;
+          font-size: 15px;
+          font-weight: bold;
+        }
+
+        &__member{
+
+          &__list{
+            display: inline-block;
+            margin: 0 5px;
+          }
+        }
+
+        &__message{
+          height: 440px;
+          overflow: scroll;
+          background-color: rgb(242, 255, 233);
+
+          &__contents{
+            width: calc(100% - 100px);
+          }
+          &__content{
+
+            padding: 0 20px;
+          }
+          &__box{
+            display: flex;
+            margin: 10px;
+            width: calc(100% - 3%);
+          }
+          &__user{
+            width: 100px;
+            min-height: 50px;
+            text-align: center;
+            &__image{
+              width: 50px;
+              height: 50px;
+              border-radius: 100%;
+            }
+            &__name{
+
+              font-size: 12px;
+              font-weight: bold;
+            }
+          }
+          &__text{
+            // line-height: 50px;
+            position: relative;
+            padding: 5px 20px;
+            background-color: $box-color;
+            border: 2px solid $box-color;
+            border-radius: 10px;         /* 角丸を指定 */
+            min-width: 60px;
+            max-width: 700px;
+          }
+            /* 三角アイコン - 枠線付きの吹き出し */
+          &__text--left::before{
+              content: '';
+              position: absolute;
+              display: block;
+              width: 0;
+              height: 0;
+              left: -15px;
+              top: 4px;
+              border-right: 15px solid $box-color;
+              border-top: 15px solid transparent;
+              border-bottom: 15px solid transparent;
+            }
+          &__text--left::after{
+            content: '';
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            left: -12px;
+            top: 4px;
+            border-right: 15px solid $box-color;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+          }
+
+          &__text--right::before{
+            content: '';
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            right: -15px;
+            top: 4px;
+            border-left: 15px solid $box-color;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+          }
+          &__text--right::after{
+            content: '';
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            right: -12px;
+            top: 4px;
+            border-left: 15px solid $box-color;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+          }
+
+          &__image{
+            max-width: 200px;
+            max-height: 200px;
+            margin: 5px;
+          }
+          &__date{
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+  .position-left{
+    float: left;
+  }
+
+  .position-right{
+    float: right
+  }
+}
+

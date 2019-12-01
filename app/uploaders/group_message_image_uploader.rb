@@ -1,4 +1,4 @@
-class GroupMassegeImageUploader < CarrierWave::Uploader::Base
+class GroupMessageImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
