@@ -1,19 +1,19 @@
 .article__contents
   .article__category
-    - if @article_all.present?
-      %table.article__category__contents
-        %tr.article__category__content
-          %th.article__heading.article__category__content.article__category__content--title
-            タイトル
-          - if @article_jenre == "全て"
-            %td.article__heading.article__category__content.article__category__content--category
-              カテゴリー
-          %td.article__heading.article__category__content.article__category__content--detail
-            詳細
-          %td.article__heading.article__category__content.article__category__content--createTime
-            作成日
-          %td.article__heading.article__category__content
-            リンク
+    %table.article__category__contents
+      %tr.article__category__content
+        %th.article__heading.article__category__content.article__category__content--title
+          タイトル
+        - if @article_jenre == "全て"
+          %td.article__heading.article__category__content.article__category__content--category
+            カテゴリー
+        %td.article__heading.article__category__content.article__category__content--detail
+          詳細
+        %td.article__heading.article__category__content.article__category__content--createTime
+          作成日
+        %td.article__heading.article__category__content
+          リンク
+    - if @article_all.length == 0
       - if @article_jenre != "全て"
         %table.article__category__contents
           - @article_all.each do |article|
@@ -62,4 +62,7 @@
                 - else
                   リンク無
     - else
-      該当する記事を投稿していません
+      %table.article__category__contents
+        %tr.article__category__content
+          %td.article__heading.article__category__content
+            該当する記事を投稿していません
