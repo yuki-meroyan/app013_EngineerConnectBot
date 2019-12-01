@@ -6,22 +6,40 @@
         = f.search_field :name_cont, class: "form__search__box", placeholder: "検索したいグループ名を入力してください", type: "text"
       .form__content
         = f.submit class: "form__button"
-      .form__content
-        - if @groups.present?
-          %table.group__tables
-            %tr.group__table
-              %th グループ名
-              %th 作成日
-              %th 人数
-            - @groups.each do |group|
-              %tr.group__table
-                %td
-                  = link_to group.name, group_path(group.id)
-                %td
-                  = group.created_at.strftime('%Y年%m月%d日')
-                %td
-                  = group.users.length
-                  人
+.article__contents
+  .article__category
+    %table.article__category__contents
+      %tr.article__category__content
+        %td.article__heading.article__category__content.article__category__content--title
+          グループ名
+        %td.article__heading.article__category__content.article__category__content--master
+          管理者
+        %td.article__heading.article__category__content.article__category__content--members
+          所属人数
+        %td.article__heading.article__category__content.article__category__content--detail
+          詳細
+        %td.article__heading.article__category__content.article__category__content--link
+          リンク
+    %table.article__category__contents
+      - @groups.each do |group|
+        %tr.article__category__content
+          %td.article__category__content.article__category__content--title
+            - if group.master == current_user.id
+              = link_to group.name, edit_group_path(group.id), class: "article__category__content--link"
+            - else
+              = group.name
+          %td.article__category__content.article__category__content--master
+            = link_to group.master_name, user_path(id: group.master), class: "article__category__content--link"
+          %td.article__category__content.article__category__content--members
+            = group.users.count
+            人
+          %td.article__category__content.article__category__content--detail
+            = group.detail
+          %td.article__category__content
+            - if group.users.include?(current_user)
+              = link_to "メッセージ", group_group_messages_path(group.id), class: "article__category__content--link"
+            - else
+              未所属
 
 
 .search__form__contents
