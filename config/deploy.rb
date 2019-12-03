@@ -73,7 +73,10 @@ set :keep_releases, 5
 #   end
 # end
 
-
+set :default_env, {
+  rbenv_root: "/usr/local/rbenv",
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
+}
 
 # 元々記述されていた after 「'deploy:publishing', 'deploy:restart'」以下を削除して、次のように書き換え
 # デプロイ処理が終わった後、Unicornを再起動するための記述
