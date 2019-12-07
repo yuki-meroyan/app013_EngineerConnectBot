@@ -6,7 +6,7 @@
   .form__content
     = f.label :category, class: "form__label" do
       カテゴリー
-    = f.text_field :category, class: "form__box", placeholder: 'カテゴリーを入力してください'
+    = f.select :category, ["募集","依頼","質問","交流"], {}, {class: "form__box"}
   .form__content
     = f.label :language, class: "form__label" do
       言語
