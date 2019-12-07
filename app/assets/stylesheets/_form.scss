@@ -143,9 +143,15 @@
       display: flex;
       margin: 20px 0 10px 0;
       input[type="text"]{
-        width: 450px;
+        width: 750px;
         margin-left: 50px;
         margin-right: 10px;
+      }
+      label {
+        padding: 5px 20px;
+      }
+      label input[type="file"] {
+        display: none;
       }
     }
     &__text{
