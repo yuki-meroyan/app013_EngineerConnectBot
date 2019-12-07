@@ -29,7 +29,7 @@
         .message__form__box
           = f.text_field :text, id: 'message__form__text', class: ".message__form__text", placeholder: 'メッセージを入力してください'
           = f.label :image, class: 'message__form__image' do
-            = fa_icon 'picture-o', class: 'fa fa-image'
+            = fa_icon 'picture-o 2x', class: 'fa fa-image'
             = f.file_field :image, class: 'message__form__image__file'
           = f.submit '送信', class: 'message__form__btn'
         -# = f.submit 'Send', class: 'submit-btn', onsubmit: "return checkNijyuSubmit();"
