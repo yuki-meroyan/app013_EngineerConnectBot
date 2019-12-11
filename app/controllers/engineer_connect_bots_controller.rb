@@ -36,11 +36,11 @@ class EngineerConnectBotsController < ApplicationController
       @article_jenre = "上級者"
     else
       @article_all = []       # [0]:初級者 / [1]:中級者 / [2]:上級者
-      beginner = Beginner.select("id","title","detail","created_at").where(user_id: current_user.id)
+      beginner = Beginner.select("id","title","detail","created_at")
       @article_all << beginner
-      intermediate = Intermediate.select("id","title","detail","created_at").where(user_id: current_user.id)
+      intermediate = Intermediate.select("id","title","detail","created_at")
       @article_all << intermediate
-      senior = Senior.select("id","title","detail","created_at").where(user_id: current_user.id)
+      senior = Senior.select("id","title","detail","created_at")
       @article_all << senior
       @article_jenre = "全て"
     end
