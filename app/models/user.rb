@@ -5,14 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :Trackable, :Timeoutable
 
-  mount_uploader :image, UserImageUploader
-  has_one  :user_detail
-  has_many :beginners
-  has_many :intermediates
-  has_many :seniors
+  mount_uploader :image, UserImageUploader, dependent: :destroy
+  has_one  :user_detail, dependent: :destroy
+  has_many :beginners, dependent: :destroy
+  has_many :intermediates, dependent: :destroy
+  has_many :seniors, dependent: :destroy
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
-  has_many :group_messages
+  has_many :group_messages, dependent: :destroy
 
   has_many :followed_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
   has_many :followeds, through: :followed_relationships

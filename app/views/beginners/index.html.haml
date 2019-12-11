@@ -1,21 +1,33 @@
-= search_form_for @beginner, class: "mb-5" do |f|
-  .search__form__contents
-    = f.label :title_cont, 'タイトル', class: 'col-sm-2 col-form-label'
-    .search__form__content
-      = f.search_field :title_cont, class: 'form-control'
-  .search__form__btn
-    = f.submit class: 'btn btn-outline-primary'
-  - @beginners.each do |beginner|
-    .request__contents
-      .request__content
-        タイトル
-        = beginner.title
-      .request__content
-        カテゴリー
-        = beginner.category
-      .request__content
-        言語
-        = beginner.language
-      .request__content
-        詳細
-        = beginner.detail
+= render 'search', { beginner: @beginner, beginners: @beginners}
+.article__contents
+  .article__category
+    %table.article__category__contents
+      %tr.article__category__content
+        %td.article__heading.article__category__content.article__category__content--title
+          タイトル
+        %td.article__heading.article__category__content.article__category__content--master
+          投稿者
+        %td.article__heading.article__category__content.article__category__content--category
+          カテゴリー
+        %td.article__heading.article__category__content.article__category__content--language
+          言語
+        %td.article__heading.article__category__content.article__category__content--detail
+          詳細
+    %table.article__category__contents
+      - if @beginners.present?
+        - @beginners.each do |beginner|
+          %tr.article__category__content
+            %td.article__category__content.article__category__content--title
+              = link_to beginner.title, beginner_path(beginner.id), class: "article__category__content--link"
+            %td.article__category__content.article__category__content--master
+              = link_to beginner.user.name, user_path(id: beginner.user.id), class: "article__category__content--link"
+            %td.article__category__content.article__category__content--category
+              = beginner.category
+            %td.article__category__content.article__category__content--language
+              = beginner.language
+            %td.article__category__content.article__category__content--detail
+              = beginner.detail
+      - else
+        %tr.article__category__content
+          %td.article__heading.article__category__content
+            該当する記事が見つかりません

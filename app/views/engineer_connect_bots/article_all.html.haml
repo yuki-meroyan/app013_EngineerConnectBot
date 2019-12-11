@@ -1,0 +1,68 @@
+.article__contents
+  .article__category
+    %table.article__category__contents
+      %tr.article__category__content
+        %th.article__heading.article__category__content.article__category__content--title
+          タイトル
+        - if @article_jenre == "全て"
+          %td.article__heading.article__category__content.article__category__content--category
+            カテゴリー
+        %td.article__heading.article__category__content.article__category__content--detail
+          詳細
+        %td.article__heading.article__category__content.article__category__content--createTime
+          作成日
+        %td.article__heading.article__category__content
+          リンク
+    - if @article_all.length != 0
+      - if @article_jenre != "全て"
+        %table.article__category__contents
+          - @article_all.each do |article|
+            %tr.article__category__content
+              %th.article__category__content.article__category__content--title
+                = article.title
+              %td.article__category__content.article__category__content--detail
+                = article.detail
+              %td.article__category__content.article__category__content--createTime
+                = article.created_at.strftime('%Y年%m月%d日')
+              %td.article__category__content
+                - if @article_jenre == "初級者"
+                  = link_to "詳細確認", beginner_path(id: article.id), class: "article__category__content--link"
+                - elsif @article_jenre == "中級者"
+                  = link_to "詳細確認", intermediate_path(id: article.id), class: "article__category__content--link"
+                - elsif @article_jenre == "上級者"
+                  = link_to "詳細確認", senior_path(id: article.id), class: "article__category__content--link"
+                - else
+                  リンク無
+      - else
+        %table.article__category__contents
+          -# [0]:初級者 / [1]:中級者 / [2]:上級者
+          - @article_all.each_with_index do |articles, i|
+            - articles.each do |article|
+              %tr.article__category__content
+              %th.article__category__content.article__category__content--title
+                = article.title
+              %td.article__category__content.article__category__content--category
+                - if i == 0
+                  初級者
+                - elsif i == 1
+                  中級者
+                - elsif i == 2
+                  上級者
+              %td.article__category__content.article__category__content--detail
+                = article.detail
+              %td.article__category__content.article__category__content--createTime
+                = article.created_at.strftime('%Y年%m月%d日')
+              %td.article__category__content
+                - if i == 0
+                  = link_to "詳細確認", beginner_path(id: article.id), class: "article__category__content--link"
+                - elsif i == 1
+                  = link_to "詳細確認", intermediate_path(id: article.id), class: "article__category__content--link"
+                - elsif i == 2
+                  = link_to "詳細確認", senior_path(id: article.id), class: "article__category__content--link"
+                - else
+                  リンク無
+    - else
+      %table.article__category__contents
+        %tr.article__category__content
+          %td.article__heading.article__category__content
+            該当する記事を投稿していません

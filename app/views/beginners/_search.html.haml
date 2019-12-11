@@ -1,0 +1,11 @@
+.form
+  .form__contents
+    = search_form_for beginner, class: "mb-5" do |f|
+      .form__content
+        = f.label :title_cont, 'タイトルから検索(初級者)', class: 'col-sm-2 col-form-label form__content__title'
+      .form__content
+        = f.search_field :title_cont, class: 'form-control form__content__search'
+      .form__content
+        = f.submit class: 'btn btn-outline-primary form__button'
+        .request__contents
+          .request__content

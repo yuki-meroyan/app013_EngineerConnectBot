@@ -6,7 +6,7 @@
   .article__content
     = link_to "初級者カテゴリー検索", beginners_path
   .article__content
-    = link_to "初級者カテゴリー確認", engineer_connect_bots_article_mine_path(junre: "初級者")
+    = link_to "初級者カテゴリー確認", engineer_connect_bots_article_all_path(junre: "初級者")
   -# .article__content
   -#   = link_to "初級者カテゴリー編集", edit_beginner_path(id: 1)
 
@@ -17,7 +17,7 @@
   .article__content
     = link_to "中級者カテゴリー検索", intermediates_path
   .article__content
-    = link_to "中級者カテゴリー確認", engineer_connect_bots_article_mine_path(junre: "中級者")
+    = link_to "中級者カテゴリー確認", engineer_connect_bots_article_all_path(junre: "中級者")
   -# .article__content
   -#   = link_to "中級者カテゴリー編集", edit_intermediate_path(id: 1)
 
@@ -28,11 +28,11 @@
   .article__content
     = link_to "上級者カテゴリー検索", seniors_path
   .article__content
-    = link_to "上級者カテゴリー確認", engineer_connect_bots_article_mine_path(junre: "上級者")
+    = link_to "上級者カテゴリー確認", engineer_connect_bots_article_all_path(junre: "上級者")
   -# .article__content
   -#   = link_to "上級者カテゴリー編集", edit_senior_path(id: 1)
 
   .article__category
     .article__category--text 全てのカテゴリー
   .article__content
-    = link_to "全てのカテゴリー確認", engineer_connect_bots_article_mine_path(junre: "全て")
+    = link_to "全てのカテゴリー確認", engineer_connect_bots_article_all_path(junre: "全て")

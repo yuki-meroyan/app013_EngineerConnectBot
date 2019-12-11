@@ -1,30 +1,33 @@
-= search_form_for @senior, as: :x, class: "mb-5" do |f|
-  .search__form__contents
-    = f.label :title_cont, 'タイトル', class: 'col-sm-2 col-form-label'
-    .search__form__content
-      = f.search_field :title_cont, class: 'form-control'
-  .search__form__btn
-    = f.submit class: 'btn btn-outline-primary'
-  - @seniors.each do |senior|
-    .request__contents
-      .request__content
-        タイトル
-        = senior.title
-      .request__content
-        カテゴリー
-        = senior.category
-      .request__content
-        言語
-        = senior.language
-      .request__content
-        詳細
-        = senior.detail
-      .request__content
-        報酬
-        = senior.price
-      .request__content
-        申込期限
-        = senior.entry_period
-      .request__content
-        開発期間
-        = senior.work_period
+= render 'search', { senior: @senior, seniors: @seniors}
+.article__contents
+  .article__category
+    %table.article__category__contents
+      %tr.article__category__content
+        %td.article__heading.article__category__content.article__category__content--title
+          タイトル
+        %td.article__heading.article__category__content.article__category__content--master
+          投稿者
+        %td.article__heading.article__category__content.article__category__content--language
+          言語
+        %td.article__heading.article__category__content.article__category__content--detail
+          申込期限
+        %td.article__heading.article__category__content.article__category__content--detail
+          詳細
+    %table.article__category__contents
+      - if @seniors.present?
+        - @seniors.each do |senior|
+          %tr.article__category__content
+            %td.article__category__content.article__category__content--title
+              = link_to senior.title, senior_path(senior.id), class: "article__category__content--link"
+            %td.article__category__content.article__category__content--master
+              = link_to senior.user.name, user_path(id: senior.user.id), class: "article__category__content--link"
+            %td.article__category__content.article__category__content--language
+              = senior.language
+            %td.article__category__content
+              = senior.entry_period
+            %td.article__category__content
+              = senior.detail
+      - else
+        %tr.article__category__content
+          %td.article__heading.article__category__content
+            該当する記事が見つかりません

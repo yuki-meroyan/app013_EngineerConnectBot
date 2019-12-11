@@ -1,8 +1,27 @@
-title
-= @beginner.title
-category
-= @beginner.category
-language
-= @beginner.language
-detail
-= @beginner.detail
+.detail-content
+  .detail-content__show
+    %table
+      %tr
+        %th タイトル
+        %td
+          = @beginner.title
+      %tr
+        %th 投稿者
+        %td
+          = link_to @beginner.user.name, user_path(id: @beginner.user.id), class: "article__category__content--link"
+      %tr
+        %th カテゴリー
+        %td
+          = @beginner.category
+      %tr
+        %th 主な言語
+        %td
+          = @beginner.language
+      %tr
+        %th 投稿日
+        %td
+          = @beginner.created_at.strftime("%Y-%m-%d")
+      %tr
+        %th 詳細
+        %td
+          = @beginner.detail
