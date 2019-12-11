@@ -1,14 +1,43 @@
-title
-= @senior.title
-category
-= @senior.category
-language
-= @senior.language
-detail
-= @senior.detail
-price
-= @senior.price
-entry_period
-= @senior.entry_period
-work_period
-= @senior.work_period
+.detail-content
+  .detail-content__show
+    %table
+      %tr
+        %th タイトル
+        %td
+          = @senior.title
+      %tr
+        %th 投稿者
+        %td
+          = link_to @senior.user.name, user_path(id: @senior.user.id), class: "article__category__content--link"
+      %tr
+        %th カテゴリー
+        %td
+          = @senior.category
+      %tr
+        %th 主な言語
+        %td
+          = @senior.language
+      %tr
+        %th 募集ステータス
+        %td
+          - if @senior.assing != nil
+            締切
+          - else
+            募集中
+      %tr
+        %th 申込締切期限
+        %td
+          = @senior.entry_period.strftime("%Y-%m-%d")
+      %tr
+        %th 開発期間
+        %td
+          = @senior.work_period.strftime("%Y-%m-%d")
+          迄
+      %tr
+        %th 報酬金額(目安)
+        %td
+          = @senior.price
+      %tr
+        %th 詳細
+        %td
+          = @senior.detail
