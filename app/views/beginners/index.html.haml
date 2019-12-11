@@ -24,11 +24,11 @@
         %td.article__heading.article__category__content.article__category__content--detail
           詳細
     %table.article__category__contents
-      - if @intermediates.present?
+      - if @beginners.present?
         - @beginners.each do |beginner|
           %tr.article__category__content
             %td.article__category__content.article__category__content--title
-              = beginner.title
+              = link_to beginner.title, beginner_path(beginner.id), class: "article__category__content--link"
             %td.article__category__content.article__category__content--master
               = link_to beginner.user.name, user_path(id: beginner.user.id), class: "article__category__content--link"
             %td.article__category__content.article__category__content--category
@@ -36,7 +36,7 @@
             %td.article__category__content.article__category__content--language
               = beginner.language
             %td.article__category__content.article__category__content--detail
-              = link_to beginner.detail, beginner_path(beginner.id), class: "article__category__content--link"
+              = beginner.detail
       - else
         %tr.article__category__content
           %td.article__heading.article__category__content
