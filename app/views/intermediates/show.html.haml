@@ -1,14 +1,36 @@
-title
-= @intermediate.title
-category
-= @intermediate.category
-language
-= @intermediate.language
-detail
-= @intermediate.detail
-entry_period
-= @intermediate.entry_period
-work_period
-= @intermediate.work_period
-recruit_member
-= @intermediate.recruit_member
+.detail-content
+  .detail-content__show
+    %table
+      %tr
+        %th タイトル
+        %td
+          = @intermediate.title
+      %tr
+        %th 投稿者
+        %td
+          = link_to @intermediate.user.name, user_path(id: @intermediate.user.id), class: "article__category__content--link"
+      %tr
+        %th カテゴリー
+        %td
+          = @intermediate.category
+      %tr
+        %th 主な言語
+        %td
+          = @intermediate.language
+      %tr
+        %th 募集人数
+        %td
+          = @intermediate.recruit_member
+      %tr
+        %th 申込締切期限
+        %td
+          = @intermediate.entry_period.strftime("%Y-%m-%d")
+      %tr
+        %th 開発期間
+        %td
+          = @intermediate.work_period.strftime("%Y-%m-%d")
+          迄
+      %tr
+        %th 詳細
+        %td
+          = @intermediate.detail
