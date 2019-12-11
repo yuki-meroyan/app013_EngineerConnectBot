@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'engineer_connect_bots#top'
   get '/engineer_connect_bots/top', to: 'engineer_connect_bots#top'
@@ -7,6 +10,7 @@ Rails.application.routes.draw do
   get '/engineer_connect_bots/article', to: 'engineer_connect_bots#article'
   get '/engineer_connect_bots/article_post', to: 'engineer_connect_bots#article_post'
   get '/engineer_connect_bots/article_mine', to: 'engineer_connect_bots#article_mine'
+  get '/engineer_connect_bots/article_all', to: 'engineer_connect_bots#article_all'
   get '/engineer_connect_bots/have_group', to: 'engineer_connect_bots#have_group'
   resources :user_details
   resources :users do
