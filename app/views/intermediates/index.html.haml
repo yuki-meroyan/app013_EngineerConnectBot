@@ -1,30 +1,43 @@
-= search_form_for @intermediate, as: :p, class: "mb-5" do |f|
-  .search__form__contents
-    = f.label :title_cont, 'タイトル', class: 'col-sm-2 col-form-label'
-    .search__form__content
-      = f.search_field :title_cont, class: 'form-control'
-  .search__form__btn
-    = f.submit class: 'btn btn-outline-primary'
-  - @intermediates.each do |intermediate|
-    .request__contents
-      .request__content
-        タイトル
-        = intermediate.title
-      .request__content
-        カテゴリー
-        = intermediate.category
-      .request__content
-        言語
-        = intermediate.language
-      .request__content
-        詳細
-        = intermediate.detail
-      .request__content
-        申込期限
-        = intermediate.entry_period
-      .request__content
-        開発期間
-        = intermediate.work_period
-      .request__content
-        募集人数
-        = intermediate.recruit_member
+.form
+  .form__contents
+    = search_form_for @intermediate, as: :p, class: "mb-5" do |f|
+      .form__content
+        = f.label :title_cont, 'タイトルから検索', class: 'col-sm-2 col-form-label form__content__title'
+      .form__content
+        = f.search_field :title_cont, class: 'form-control form__content__search'
+      .form__content
+        = f.submit class: 'btn btn-outline-primary form__button'
+        .request__contents
+          .request__content
+.article__contents
+  .article__category
+    %table.article__category__contents
+      %tr.article__category__content
+        %td.article__heading.article__category__content.article__category__content--title
+          タイトル
+        %td.article__heading.article__category__content.article__category__content--master
+          投稿者
+        %td.article__heading.article__category__content.article__category__content--language
+          言語
+        %td.article__heading.article__category__content.article__category__content--detail
+          申込期限
+        %td.article__heading.article__category__content.article__category__content--detail
+          詳細
+    %table.article__category__contents
+      - if @intermediates.present?
+        - @intermediates.each do |intermediate|
+          %tr.article__category__content
+            %td.article__category__content.article__category__content--title
+              = intermediate.title
+            %td.article__category__content.article__category__content--master
+              = link_to intermediate.user.name, user_path(id: intermediate.user.id), class: "article__category__content--link"
+            %td.article__category__content.article__category__content--language
+              = intermediate.language
+            %td.article__category__content
+              = intermediate.entry_period
+            %td.article__category__content
+              = link_to intermediate.detail, beginner_path(intermediate.id), class: "article__category__content--link"
+      - else
+        %tr.article__category__content
+          %td.article__heading.article__category__content
+            該当する記事が見つかりません
