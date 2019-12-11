@@ -1,0 +1,33 @@
+.form
+  .form__contents
+    .search__radio-content
+      %h1 作成したいレベルを選択してください
+      %p ※選択すると作成フォームが切り替わります
+      %fieldset
+        %input#item-1.radio-inline__input{:name => "accessible-radio", :type => "radio", :value => "beginner"}
+        %label.radio-inline__label{:for => "item-1"}
+          初級者
+        %input#item-2.radio-inline__input{:name => "accessible-radio", :type => "radio", :value => "intermediate"}
+        %label.radio-inline__label{:for => "item-2"}
+          中級者
+        %input#item-3.radio-inline__input{:name => "accessible-radio", :type => "radio", :value => "senior"}
+        %label.radio-inline__label{:for => "item-3"}
+          上級者
+
+#search--box-beginner.search__radio-result
+  .form
+    .form__contents
+      %h2 初級者カテゴリー投稿
+      = render 'beginners/beginnerForm', { beginner: @beginner, text: "登録する"}
+
+#search--box-intermediate.search__radio-result
+  .form
+    .form__contents
+      %h2 中級者カテゴリー投稿
+      = render 'intermediates/intermediateForm', { intermediate: @intermediate, text: "登録する"}
+
+#search--box-senior.search__radio-result
+  .form
+    .form__contents
+      %h2 上級者カテゴリー投稿
+      = render 'seniors/seniorForm', { senior: @senior, text: "登録する"}
