@@ -1,30 +1,24 @@
+.form
+  .form__contents
+    .search__radio-content
+      %h1 検索したいレベルを選択してください
+      %p ※選択すると検索フォームが切り替わります
+      %fieldset
+        %input#item-1.radio-inline__input{:name => "accessible-radio", :type => "radio", :value => "beginner"}
+        %label.radio-inline__label{:for => "item-1"}
+          初級者
+        %input#item-2.radio-inline__input{:name => "accessible-radio", :type => "radio", :value => "intermediate"}
+        %label.radio-inline__label{:for => "item-2"}
+          中級者
+        %input#item-3.radio-inline__input{:name => "accessible-radio", :type => "radio", :value => "senior"}
+        %label.radio-inline__label{:for => "item-3"}
+          上級者
 
-= search_form_for @beginner, class: "mb-5" do |f|
-  .search__form__contents
-    = f.label :title_cont, 'タイトル', class: 'col-sm-2 col-form-label'
-    .search__form__content
-      = f.search_field :title_cont, class: 'form-control'
-  .search__form__btn
-    = f.submit class: 'btn btn-outline-primary'
-  - @beginners.each do |beginner|
-    = beginner.title
+#search--box-beginner.search__radio-result
+  = render 'beginners/search', { beginner: @beginner, beginners: @beginners}
 
-= search_form_for @intermediate, as: :p, class: "mb-5" do |f|
-  .search__form__contents
-    = f.label :title_cont, 'タイトル', class: 'col-sm-2 col-form-label'
-    .search__form__content
-      = f.search_field :title_cont, class: 'form-control'
-  .search__form__btn
-    = f.submit class: 'btn btn-outline-primary'
-  - @intermediates.each do |intermediate|
-    = intermediate.title
+#search--box-intermediate.search__radio-result
+  = render 'intermediates/search', { intermediate: @intermediate, intermediates: @intermediates}
 
-= search_form_for @senior, as: :x, class: "mb-5" do |f|
-  .search__form__contents
-    = f.label :title_cont, 'タイトル', class: 'col-sm-2 col-form-label'
-    .search__form__content
-      = f.search_field :title_cont, class: 'form-control'
-  .search__form__btn
-    = f.submit class: 'btn btn-outline-primary'
-  - @seniors.each do |senior|
-    = senior.title
+#search--box-senior.search__radio-result
+  = render 'seniors/search', { senior: @senior, seniors: @seniors}
