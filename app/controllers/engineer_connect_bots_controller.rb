@@ -21,7 +21,9 @@ class EngineerConnectBotsController < ApplicationController
   end
 
   def article_post
-
+    @beginner = Beginner.new
+    @intermediate = Intermediate.new
+    @senior = Senior.new
   end
 
   def article_all
