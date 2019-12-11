@@ -28,7 +28,7 @@
         - @intermediates.each do |intermediate|
           %tr.article__category__content
             %td.article__category__content.article__category__content--title
-              = intermediate.title
+              = link_to intermediate.title, intermediate_path(intermediate.id), class: "article__category__content--link"
             %td.article__category__content.article__category__content--master
               = link_to intermediate.user.name, user_path(id: intermediate.user.id), class: "article__category__content--link"
             %td.article__category__content.article__category__content--language
@@ -36,7 +36,7 @@
             %td.article__category__content
               = intermediate.entry_period
             %td.article__category__content
-              = link_to intermediate.detail, beginner_path(intermediate.id), class: "article__category__content--link"
+              = intermediate.detail
       - else
         %tr.article__category__content
           %td.article__heading.article__category__content
