@@ -22,10 +22,10 @@
   .form__content
     = f.label :entry_period, class: "form__label" do
       申込締切期限
-    = f.text_field :entry_period, id: "entry_period", class: "form__calendar"
+    = f.text_field :entry_period, id: "intermediate_entry_period", class: "form__calendar"
   .form__content
     = f.label :work_period, class: "form__label" do
       開発締切期限
-    = f.text_field :work_period, id: "work_period", class: "form__calendar"
+    = f.text_field :work_period, id: "intermediate_work_period", class: "form__calendar"
   .form__content
     = f.submit text, class: "form__button"
