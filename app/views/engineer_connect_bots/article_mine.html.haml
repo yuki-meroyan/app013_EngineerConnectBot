@@ -13,7 +13,7 @@
           作成日
         %td.article__heading.article__category__content
           リンク
-    - if @article_all.length == 0
+    - if @article_all.length != 0
       - if @article_jenre != "全て"
         %table.article__category__contents
           - @article_all.each do |article|
