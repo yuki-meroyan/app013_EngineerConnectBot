@@ -28,7 +28,7 @@
         - @seniors.each do |senior|
           %tr.article__category__content
             %td.article__category__content.article__category__content--title
-              = senior.title
+              = link_to senior.title, senior_path(senior.id), class: "article__category__content--link"
             %td.article__category__content.article__category__content--master
               = link_to senior.user.name, user_path(id: senior.user.id), class: "article__category__content--link"
             %td.article__category__content.article__category__content--language
@@ -36,7 +36,7 @@
             %td.article__category__content
               = senior.entry_period
             %td.article__category__content
-              = link_to senior.detail, beginner_path(senior.id), class: "article__category__content--link"
+              = senior.detail
       - else
         %tr.article__category__content
           %td.article__heading.article__category__content
