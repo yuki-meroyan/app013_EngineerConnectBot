@@ -1,72 +1,29 @@
--# %p.pagetop
--#   %a{:href => "#"} ↑
+%p.pagetop
+  %a{:href => "#"} ↑
 %footer
   #footermenu
-    %ul
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-    %ul
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-    %ul
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-    %ul
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-    %ul
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
-      %li
-        %a{:href => "#"} メニューサンプル
+    .footermenu__contents
+      .footermenu__content
+        .footermenu__icon
+          = link_to "line://" do
+            = icon("fab", "line", class: "footermenu__icon--size")
+        .footermenu__icon
+          = link_to "https://ja-jp.facebook.com/" do
+            = icon("fab", "facebook-square", class: "footermenu__icon--size")
+        .footermenu__icon
+          = link_to "https://www.instagram.com/?hl=ja" do
+            = icon("fab", "instagram", class: "footermenu__icon--size")
+        .footermenu__icon
+          = link_to "https://twitter.com/login?lang=ja" do
+            = icon("fab", "twitter-square", class: "footermenu__icon--size")
+        .footermenu__icon
+          = link_to "https://twitter.com/login?lang=ja" do
+            = icon("fab", "twitter-square", class: "footermenu__icon--size")
+
+      %ul
+        %li
+          %a{:href => "#"} Engineer Connect Bot
+
   / /footermenu
   #copyright
     %small
