@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/engineer_connect_bots/article_mine', to: 'engineer_connect_bots#article_mine'
   get '/engineer_connect_bots/article_all', to: 'engineer_connect_bots#article_all'
   get '/engineer_connect_bots/have_group', to: 'engineer_connect_bots#have_group'
+  get '/engineer_connect_bots/user_menu', to: 'engineer_connect_bots#user_menu'
+  get '/engineer_connect_bots/group_menu', to: 'engineer_connect_bots#group_menu'
   resources :user_details
   resources :users do
     member do
