@@ -9,6 +9,9 @@
         ニックネーム
       = @user.name
     .form__content
+      .form__label
+      = link_to "詳細を見る", user_detail_path(@user) if @user.user_detail.present?
+    .form__content
       = render 'follow_form', user: @user if user_signed_in?
 
 -# %h4
