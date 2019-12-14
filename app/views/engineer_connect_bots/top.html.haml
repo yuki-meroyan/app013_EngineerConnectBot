@@ -1,59 +1,67 @@
 
+.article__contents
+  .article__category
+    .article__category--text ユーザーメニュー
+  - unless user_signed_in?
+    .article__content
+      = link_to "ユーザー作成", new_user_registration_path
+    .article__content
+      = link_to "ログイン", new_user_session_path
+  - else
+    .article__content
+      = link_to '基本編集', edit_user_registration_path
+    - if current_user.user_detail.present?
+      .article__content
+        = link_to '詳細編集', edit_user_detail_path(current_user)
+      .article__content
+        = link_to '詳細確認', user_detail_path(current_user)
+    - else
+      .article__content
+        = link_to '詳細登録', new_user_detail_path
+    .article__content
+      = link_to '友達確認', user_path(current_user)
+    .article__content
+      = link_to "ユーザー検索", users_path
+    .article__content
+      = link_to 'ログアウト', destroy_user_session_path, method: :delete
 
-.topPage__contents
-  .topPage__content
+    .article__category
+      .article__category--text グループメニュー
+    .article__content
+      = link_to 'グループ作成', new_group_path
+    .article__content
+      = link_to 'グループ一覧', engineer_connect_bots_have_group_path
+    .article__content
+      = link_to 'グループ検索', groups_path
 
-  -# %ul.topPage__user__menu
-  -#   %li#topPage__myDetail.topPage__user__list
-  -#     %span.topPage__user__list--text
-  -#       自己管理
-  -#     = fa_icon 'bars 1x', id: "myDeail", class: "fas fa-bars"
-  -#     .detail__lists.myDetail__lists
-  -#       - if user_signed_in?
-  -#         .detail__list.myDetail__list
-  -#           = link_to "ユーザー編集", edit_user_registration_path
-  -#         .detail__list.myDetail__list
-  -#           = link_to "詳細登録", new_user_details_path
-  -#         .detail__list.myDetail__list
-  -#           = link_to "詳細編集", edit_user_details_path
-  -#         .detail__list.myDetail__list
-  -#           = link_to "詳細確認", user_details_path
-  -#         .detail__list.myDetail__list
-  -#           = link_to "ログアウト", destroy_user_session_path, method: :delete
-  -#       - else
-  -#         .detail__list.myDetail__list
-  -#           = link_to "ユーザー作成", new_user_registration_path
-  -#         .detail__list.myDetail__list
-  -#           = link_to "ログイン", new_user_session_path
+    .article__category
+      .article__category--text 初級者カテゴリー
+    .article__content
+      = link_to "初級者カテゴリー作成", new_beginner_path
+    .article__content
+      = link_to "初級者カテゴリー検索", beginners_path
+    .article__content
+      = link_to "初級者カテゴリー確認", engineer_connect_bots_article_all_path(junre: "初級者")
 
-  -#   %li#topPage__otherDetail.topPage__user__list
-  -#     %span.topPage__user__list--text
-  -#       ユーザー
-  -#     = fa_icon 'bars 1x', id: "otherDetail", class: "fas fa-bars"
-  -#     .detail__lists.otherDetail__lists
-  -#       .detail__list.otherDetail__list
-  -#         = link_to "ユーザーを検索", users_path
+    .article__category
+      .article__category--text 中級者カテゴリー
+    .article__content
+      = link_to "中級者カテゴリー作成", new_intermediate_path
+    .article__content
+      = link_to "中級者カテゴリー検索", intermediates_path
+    .article__content
+      = link_to "中級者カテゴリー確認", engineer_connect_bots_article_all_path(junre: "中級者")
 
-  -#   %li#topPage__groupDetail.topPage__user__list
-  -#     %span.topPage__user__list--text
-  -#       グループ
-  -#     = fa_icon 'bars 1x', id: "groupDetail", class: "fas fa-bars"
-  -#     .detail__lists.groupDetail__lists
-  -#       .detail__list.groupDetail__list
-  -#         = link_to 'グループを作成', new_group_path
-  -#       .detail__list.groupDetail__list
-  -#         = link_to 'グループを編集', engineer_connect_bots_have_group_path
-  -#       .detail__list.groupDetail__list
-  -#         = link_to 'グループを検索', groups_path
+    .article__category
+      .article__category--text 上級者カテゴリー
+    .article__content
+      = link_to "上級者カテゴリー作成", new_senior_path
+    .article__content
+      = link_to "上級者カテゴリー検索", seniors_path
+    .article__content
+      = link_to "上級者カテゴリー確認", engineer_connect_bots_article_all_path(junre: "上級者")
 
-  -#   %li#topPage__articleDetail.topPage__user__list
-  -#     %span.topPage__user__list--text
-  -#       投稿と依頼
-  -#     = fa_icon 'bars 1x', id: "articleDetail", class: "fas fa-bars"
-  -#     .detail__lists.articleDetail__lists
-  -#       .detail__list.articleDetail__list
-  -#         = link_to '記事を検索する', engineer_connect_bots_search_path
-  -#       .detail__list.articleDetail__list
-  -#         = link_to '記事を投稿する', engineer_connect_bots_article_path
-
-
+    .article__category
+      .article__category--text 全てのカテゴリー
+    .article__content
+      = link_to "全てのカテゴリー確認", engineer_connect_bots_article_all_path(junre: "全て")
