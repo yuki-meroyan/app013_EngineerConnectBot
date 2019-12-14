@@ -2,7 +2,7 @@
   %nav#menubar
     %ul
       %li.menuimg.menu1
-        = link_to 'ユーザー', root_path
+        = link_to 'ユーザー', engineer_connect_bots_user_menu_path
         - if user_signed_in?
           %ul.ddmenu
             %li
@@ -28,7 +28,7 @@
             %li
               = link_to "ログイン", new_user_session_path
       %li.menuimg.menu2
-        = link_to 'グループ', root_path
+        = link_to 'グループ', engineer_connect_bots_group_menu_path
         %ul.ddmenu
           %li
             = link_to 'グループ作成', new_group_path
