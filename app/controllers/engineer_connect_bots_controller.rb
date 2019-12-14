@@ -5,6 +5,13 @@ class EngineerConnectBotsController < ApplicationController
 
   end
 
+  def user_menu
+
+  end
+
+  def group_menu
+  end
+
   def search
     @beginner = Beginner.ransack(params[:q])
     @beginners = @beginner.result(distinct: true)
