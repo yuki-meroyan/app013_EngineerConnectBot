@@ -16,10 +16,6 @@
               %li
                 = link_to '詳細登録', new_user_detail_path
             %li
-              = link_to '友達確認', user_path(current_user)
-            %li
-              = link_to "ユーザー検索", users_path
-            %li
               = link_to 'ログアウト', destroy_user_session_path, method: :delete
         - else
           %ul.ddmenu
@@ -28,6 +24,14 @@
             %li
               = link_to "ログイン", new_user_session_path
       %li.menuimg.menu2
+        = link_to '友達', root_path
+        %ul.ddmenu
+          %li
+            = link_to 'フォローリスト', user_path(current_user)
+          %li
+            = link_to "ユーザー検索", users_path
+
+      %li.menuimg.menu3
         = link_to 'グループ', engineer_connect_bots_group_menu_path
         %ul.ddmenu
           %li
@@ -37,7 +41,7 @@
           %li
             = link_to 'グループ検索', groups_path
 
-      %li.menuimg.menu3
+      %li.menuimg.menu4
         = link_to '掲示板', engineer_connect_bots_article_path
         %ul.ddmenu
           %li
@@ -46,7 +50,4 @@
             = link_to '投稿記事検索', engineer_connect_bots_search_path
           %li
             = link_to '投稿記事確認', engineer_connect_bots_article_mine_path
-
-      %li.menuimg.menu4
-        = link_to '調整中(TOPへ戻る)', root_path
-        %ul.ddmenu
+        
