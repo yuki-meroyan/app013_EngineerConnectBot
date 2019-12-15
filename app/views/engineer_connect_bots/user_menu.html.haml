@@ -13,10 +13,6 @@
       .article__content
         = link_to '詳細登録', new_user_detail_path
     .article__content
-      = link_to '友達確認', user_path(current_user)
-    .article__content
-      = link_to "ユーザー検索", users_path
-    .article__content
       = link_to 'ログアウト', destroy_user_session_path, method: :delete
   - else
     .article__content
