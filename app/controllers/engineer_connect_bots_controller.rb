@@ -6,7 +6,9 @@ class EngineerConnectBotsController < ApplicationController
   end
 
   def user_menu
+  end
 
+  def friend_menu
   end
 
   def group_menu
