@@ -3,7 +3,7 @@ $(function(){
 
   function appendSearchUser(user){
     var html = `<div class="form__search__result__box">
-                  <a href="/user_details/${user.user_id}">
+                  <a href="/users/${user.user_id}">
                     <img class="form__search__image" src="${user.user_image.url}">
                   </a>
                   <div class="form__search__name">
