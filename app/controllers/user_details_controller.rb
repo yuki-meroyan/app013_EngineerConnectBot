@@ -1,6 +1,6 @@
 class UserDetailsController < ApplicationController
   before_action :user_detail_params, only: [:create, :update]
-  before_action :set_user_detail   , only: [:edit  , :update]
+  before_action :set_user_detail   , only: [:edit  , :update, :show]
 
   def new
     @user_detail = UserDetail.new
