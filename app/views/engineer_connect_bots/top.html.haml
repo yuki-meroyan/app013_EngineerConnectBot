@@ -1,13 +1,7 @@
-
 .article__contents
   .article__category
     .article__category--text ユーザーメニュー
-  - unless user_signed_in?
-    .article__content
-      = link_to "ユーザー作成", new_user_registration_path
-    .article__content
-      = link_to "ログイン", new_user_session_path
-  - else
+  - if user_signed_in?
     .article__content
       = link_to '基本編集', edit_user_registration_path
     - if current_user.user_detail.present?
@@ -19,49 +13,63 @@
       .article__content
         = link_to '詳細登録', new_user_detail_path
     .article__content
-      = link_to '友達確認', user_path(current_user)
-    .article__content
-      = link_to "ユーザー検索", users_path
-    .article__content
       = link_to 'ログアウト', destroy_user_session_path, method: :delete
+  - else
+    .article__content
+      = link_to "ユーザー作成", new_user_registration_path
+    .article__content
+      = link_to "ログイン", new_user_session_path
 
-    .article__category
-      .article__category--text グループメニュー
+.article__contents
+  .article__category
+    .article__category--text フレンドメニュー
+  - if user_signed_in?
     .article__content
-      = link_to 'グループ作成', new_group_path
+      = link_to '友達確認', user_detail_path(current_user)
     .article__content
-      = link_to 'グループ一覧', engineer_connect_bots_have_group_path
-    .article__content
-      = link_to 'グループ検索', groups_path
+      メッセージを送る（調整中）
+  .article__content
+    = link_to "ユーザー検索", users_path
 
-    .article__category
-      .article__category--text 初級者カテゴリー
-    .article__content
-      = link_to "初級者カテゴリー作成", new_beginner_path
-    .article__content
-      = link_to "初級者カテゴリー検索", beginners_path
-    .article__content
-      = link_to "初級者カテゴリー確認", engineer_connect_bots_article_all_path(junre: "初級者")
+.article__contents
+  .article__category
+    .article__category--text グループメニュー
+  .article__content
+    = link_to 'グループ作成', new_group_path
+  .article__content
+    = link_to 'グループ一覧', engineer_connect_bots_have_group_path
+  .article__content
+    = link_to 'グループ検索', groups_path
 
-    .article__category
-      .article__category--text 中級者カテゴリー
-    .article__content
-      = link_to "中級者カテゴリー作成", new_intermediate_path
-    .article__content
-      = link_to "中級者カテゴリー検索", intermediates_path
-    .article__content
-      = link_to "中級者カテゴリー確認", engineer_connect_bots_article_all_path(junre: "中級者")
+.article__contents
+  .article__category
+    .article__category--text 初級者カテゴリー
+  .article__content
+    = link_to "初級者カテゴリー作成", new_beginner_path
+  .article__content
+    = link_to "初級者カテゴリー検索", beginners_path
+  .article__content
+    = link_to "初級者カテゴリー確認", engineer_connect_bots_article_all_path(junre: "初級者")
 
-    .article__category
-      .article__category--text 上級者カテゴリー
-    .article__content
-      = link_to "上級者カテゴリー作成", new_senior_path
-    .article__content
-      = link_to "上級者カテゴリー検索", seniors_path
-    .article__content
-      = link_to "上級者カテゴリー確認", engineer_connect_bots_article_all_path(junre: "上級者")
+  .article__category
+    .article__category--text 中級者カテゴリー
+  .article__content
+    = link_to "中級者カテゴリー作成", new_intermediate_path
+  .article__content
+    = link_to "中級者カテゴリー検索", intermediates_path
+  .article__content
+    = link_to "中級者カテゴリー確認", engineer_connect_bots_article_all_path(junre: "中級者")
 
-    .article__category
-      .article__category--text 全てのカテゴリー
-    .article__content
-      = link_to "全てのカテゴリー確認", engineer_connect_bots_article_all_path(junre: "全て")
+  .article__category
+    .article__category--text 上級者カテゴリー
+  .article__content
+    = link_to "上級者カテゴリー作成", new_senior_path
+  .article__content
+    = link_to "上級者カテゴリー検索", seniors_path
+  .article__content
+    = link_to "上級者カテゴリー確認", engineer_connect_bots_article_all_path(junre: "上級者")
+
+  .article__category
+    .article__category--text 全てのカテゴリー
+  .article__content
+    = link_to "全てのカテゴリー確認", engineer_connect_bots_article_all_path(junre: "全て")
