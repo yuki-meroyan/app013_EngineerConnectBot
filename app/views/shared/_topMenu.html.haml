@@ -24,10 +24,10 @@
             %li
               = link_to "ログイン", new_user_session_path
       %li.menuimg.menu2
-        = link_to '友達', root_path
+        = link_to '友達', engineer_connect_bots_friend_menu_path
         %ul.ddmenu
           %li
-            = link_to 'フォローリスト', user_path(current_user)
+            = link_to 'フォローリスト', user_path(current_user) if user_signed_in?
           %li
             = link_to "ユーザー検索", users_path
 
@@ -42,7 +42,7 @@
             = link_to 'グループ検索', groups_path
 
       %li.menuimg.menu4
-        = link_to '掲示板', engineer_connect_bots_article_path
+        = link_to '掲示板', engineer_connect_bots_article_menu_path
         %ul.ddmenu
           %li
             = link_to '投稿新規作成', engineer_connect_bots_article_post_path
@@ -50,4 +50,4 @@
             = link_to '投稿記事検索', engineer_connect_bots_search_path
           %li
             = link_to '投稿記事確認', engineer_connect_bots_article_mine_path
-        
+
