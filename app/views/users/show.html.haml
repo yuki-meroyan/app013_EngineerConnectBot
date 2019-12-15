@@ -8,9 +8,13 @@
       .form__label
         ニックネーム
       = @user.name
-    .form__content
-      .form__label
-      = link_to "詳細を見る", user_detail_path(@user) if @user.user_detail.present?
+    - if @user.user_detail.present? && @follow.present?
+      .form__content
+        .form__label
+        = link_to "詳細を見る", user_detail_path(@user), class: "article__category__content--link"
+      .form__content
+        .form__label
+        = link_to "メッセージを送る", "", class: "article__category__content--link"
     .form__content
       = render 'follow_form', user: @user if user_signed_in?
 
