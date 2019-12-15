@@ -7,13 +7,15 @@ Rails.application.routes.draw do
   root to: 'engineer_connect_bots#top'
   get '/engineer_connect_bots/top', to: 'engineer_connect_bots#top'
   get '/engineer_connect_bots/search', to: 'engineer_connect_bots#search'
-  get '/engineer_connect_bots/article', to: 'engineer_connect_bots#article'
+  get '/engineer_connect_bots/user_menu', to: 'engineer_connect_bots#user_menu'
+  get '/engineer_connect_bots/friend_menu', to: 'engineer_connect_bots#friend_menu'
+  get '/engineer_connect_bots/group_menu', to: 'engineer_connect_bots#group_menu'
+  get '/engineer_connect_bots/article_menu', to: 'engineer_connect_bots#article'
   get '/engineer_connect_bots/article_post', to: 'engineer_connect_bots#article_post'
   get '/engineer_connect_bots/article_mine', to: 'engineer_connect_bots#article_mine'
   get '/engineer_connect_bots/article_all', to: 'engineer_connect_bots#article_all'
   get '/engineer_connect_bots/have_group', to: 'engineer_connect_bots#have_group'
-  get '/engineer_connect_bots/user_menu', to: 'engineer_connect_bots#user_menu'
-  get '/engineer_connect_bots/group_menu', to: 'engineer_connect_bots#group_menu'
+
   resources :user_details
   resources :users do
     member do
