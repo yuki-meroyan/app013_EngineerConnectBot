@@ -42,6 +42,9 @@ class UserDetailsController < ApplicationController
 
   def set_user_detail
     @user_detail = UserDetail.find_by(user_id: current_user.id)
+    unless @user_detail.present?
+      redirect_to new_user_detail_path(current_user)
+    end
   end
 
 end
