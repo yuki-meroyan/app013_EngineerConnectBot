@@ -27,7 +27,7 @@
         = link_to '友達', engineer_connect_bots_friend_menu_path
         %ul.ddmenu
           %li
-            = link_to 'フォローリスト', user_path(current_user) if user_signed_in?
+            = link_to 'フォローリスト', user_detail_path(current_user) if user_signed_in?
           %li
             = link_to "ユーザー検索", users_path
 
