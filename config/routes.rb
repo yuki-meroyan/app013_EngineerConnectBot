@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   resources :seniors
   resources :groups do
     resources :group_messages
+    namespace :api do
+      resources :group_messages, only: :index, defaults: { format: 'json' }
+    end
   end
   resources :relationships, only: [:create, :destroy]
 end
