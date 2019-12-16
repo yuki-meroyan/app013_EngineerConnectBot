@@ -1,24 +1,51 @@
 $(function(){
-  function buildHTML(message){
-    console.log(message.image.url)
-    var getImageTag = message.image.url? `<img class="message__lower__image" src=${message.image.url}>`: ""
-    var html = `<div class="message" data-message_id= "${message.id}">
-                  <div class="message__upper-info">
-                    <p class="message__upper-info__talker">
-                      ${message.user_name}
-                    </p>
-                    <p class="message__upper-info__date">
-                      ${message.created_at}
-                    </p>
-                  </div>
-                  <div class="message__lower">
-                      <p class="message__lower__content">
-                        ${message.content}
-                      </p>
-                      ${getImageTag}
-                  </div>
-                </div>`
-    return html;
+  function buildHTML(group_message){
+    var userImageTag = `<img class="group__message__user__image" src=${group_message.user_image}>`
+    var getTextTag = group_message.text? `<div class="group__message__text group__message__text--right">
+                                            ${group_message.text}
+                                          </div>`: ""
+    var getImageTag = group_message.image.url? `<img class="group__message__image" src=${group_message.image.url}>`: ""
+    console.log(userImageTag);
+    console.log(getTextTag);
+    console.log(getTextTag);
+    // if (group_message.text != ""){
+    //   var htmlText = `<div class="group__message__box" data-message_id=${group_message.id}>
+    //                     <div class="group__message__contents position-right">
+    //                       <div class="group__message__content position-right">
+    //                         ${getTextTag}
+    //                       </div>
+    //                     </div>
+    //                     <div class="group__message__user">
+    //                       ${userImageTag}
+    //                       <p class="group__message__user__name">
+    //                         ${group_message.user_name}
+    //                       </p>
+    //                       <p class="group__message__date">
+    //                         ${group_message.created_at}
+    //                       </p>
+    //                     </div>
+    //                   </div>`
+    //   $('.group__message').append(htmlText);
+    // }
+    // if (group_message.image.url != ""){
+    //   var htmlImage = `<div class="group__message__box" data-message_id=${group_message.id}>
+    //                     <div class="group__message__contents position-right">
+    //                       <div class="group__message__content position-right">
+    //                       ${getImageTag}
+    //                       </div>
+    //                     </div>
+    //                     <div class="group__message__user">
+    //                       ${userImageTag}
+    //                       <p class="group__message__user__name">
+    //                         ${group_message.user_name}
+    //                       </p>
+    //                       <p class="group__message__date">
+    //                         ${group_message.created_at}
+    //                       </p>
+    //                     </div>
+    //                   </div>`
+    //   $('.group__message').append(htmlImage);
+    // }
   }
 
   function buildMessageHTML(message){
@@ -58,10 +85,9 @@ $(function(){
       contentType: false,
     })
     .done(function(data){
-      console.log(data);
       // var html = buildHTML(data);
-      // $('.group__message').append(html);
-      // $('.group__message').animate({ scrollTop: $('.group__message')[0].scrollHeight});
+      buildHTML(data);
+      $('.group__message').animate({ scrollTop: $('.group__message')[0].scrollHeight});
       $('#new-group-message')[0].reset();
       $('.submit-btn').attr('disabled', false);
     })
