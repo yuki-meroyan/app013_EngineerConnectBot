@@ -27,6 +27,4 @@
           = @beginner.detail
 
 .form
-  .form__contents
-    %h2 〜〜〜  コメント  〜〜〜
-    = render 'comments/article_comment', { comments: @comments }
+  = render 'comments/article_comment', { comments: @comments, comment: @comment, url: "/beginners/" + @beginner.id.to_s + "/beginner_comments" }
