@@ -25,3 +25,8 @@
         %th 詳細
         %td
           = @beginner.detail
+
+.form
+  .form__contents
+    %h2 〜〜〜  コメント  〜〜〜
+    = render 'comments/article_comment', { comments: @comments }
