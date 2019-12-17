@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_29_135618) do
+ActiveRecord::Schema.define(version: 2019_12_17_141209) do
+
+  create_table "beginner_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "comment", null: false
+    t.bigint "user_id", null: false
+    t.bigint "beginner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["beginner_id"], name: "index_beginner_comments_on_beginner_id"
+    t.index ["user_id"], name: "index_beginner_comments_on_user_id"
+  end
 
   create_table "beginners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
@@ -141,6 +151,8 @@ ActiveRecord::Schema.define(version: 2019_11_29_135618) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "beginner_comments", "beginners"
+  add_foreign_key "beginner_comments", "users"
   add_foreign_key "beginners", "users"
   add_foreign_key "group_messages", "groups"
   add_foreign_key "group_messages", "users"
