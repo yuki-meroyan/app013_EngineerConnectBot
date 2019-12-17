@@ -14,6 +14,9 @@ class EngineerConnectBotsController < ApplicationController
   def group_menu
   end
 
+  def article_menu
+  end
+
   def search
     @beginner = Beginner.ransack(params[:q])
     @beginners = @beginner.result(distinct: true)
@@ -25,9 +28,6 @@ class EngineerConnectBotsController < ApplicationController
     @seniors = @senior.result(distinct: true)
   end
 
-  def article
-
-  end
 
   def article_post
     @beginner = Beginner.new
