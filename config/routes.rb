@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/engineer_connect_bots/user_menu', to: 'engineer_connect_bots#user_menu'
   get '/engineer_connect_bots/friend_menu', to: 'engineer_connect_bots#friend_menu'
   get '/engineer_connect_bots/group_menu', to: 'engineer_connect_bots#group_menu'
-  get '/engineer_connect_bots/article_menu', to: 'engineer_connect_bots#article'
+  get '/engineer_connect_bots/article_menu', to: 'engineer_connect_bots#article_menu'
   get '/engineer_connect_bots/article_post', to: 'engineer_connect_bots#article_post'
   get '/engineer_connect_bots/article_mine', to: 'engineer_connect_bots#article_mine'
   get '/engineer_connect_bots/article_all', to: 'engineer_connect_bots#article_all'
@@ -22,7 +22,9 @@ Rails.application.routes.draw do
       get :followed, :followers
     end
   end
-  resources :beginners
+  resources :beginners do
+    resources :beginner_comments
+  end
   resources :intermediates
   resources :seniors
   resources :groups do
