@@ -1,16 +1,25 @@
 #comments.comments
-  あ
+  .comments__form
+    = form_with(model: comment, url: url, local: true) do |f|
+      .comments__label
+        = f.label :comment, class: "comments__label--text" do
+          _/_/_/_/_/_/_/_/_/_/_/_/_/_/_  コメントフォーム  _/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+      .comments__box
+        = f.text_area :comment, class: "comments__box--field", placeholder: 'コメントを入力してください'
+      .form__content
+        = f.submit "コメントする", class: "form__button"
   .comments__contents
-    い
-    .comments__content
-      う
-      .comments__user
-        え
-        .comments__user__name
-          お
-        .comments__user__icon
-          A
-      .comments__text
-        B
-        .comments__text__box
-          C
+    - if comments.present?
+      - comments.each do |comment|
+        .comments__content
+          .comments__user
+            .comments__user__name
+              = comment.user.name
+            .comments__user__icon
+              = image_tag comment.user.image.url, class: "comments__user__image"
+          .comments__text
+            .comments__text__box
+              = comment.comment
+          .comments__time
+            = comment.created_at.strftime("%Y/%m/%d %H:%M")
+
