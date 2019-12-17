@@ -82,15 +82,14 @@ $(function(){
       contentType: false,
     })
     .done(function(data){
-      // var html = buildHTML(data);
       buildHTML(data);
-      $('.group__message').animate({ scrollTop: $('.group__message')[0].scrollHeight});
+      $('#group__message').animate({ scrollTop: $('#group__message')[0].scrollHeight});
       $('#new-group-message')[0].reset();
-      $('.submit-btn').attr('disabled', false);
+      $('.message__form__btn').attr('disabled', false);
     })
     .fail(function(){
       alert('入力内容が正しくありません');
-      $('.submit-btn').attr('disabled', false);
+      $('.message__form__btn').attr('disabled', false);
     });
   })
 
