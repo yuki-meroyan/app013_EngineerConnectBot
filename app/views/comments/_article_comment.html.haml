@@ -13,13 +13,15 @@
       - comments.each do |comment|
         .comments__content
           .comments__user
+            .comments__user__icon
+              = link_to user_path(comment.user) do
+                = image_tag comment.user.image.url, class: "comments__user__image"
             .comments__user__name
               = comment.user.name
-            .comments__user__icon
-              = image_tag comment.user.image.url, class: "comments__user__image"
+            .comments__time
+              = comment.created_at.strftime("%y/%m/%d %H:%M")
           .comments__text
             .comments__text__box
               = comment.comment
-          .comments__time
-            = comment.created_at.strftime("%Y/%m/%d %H:%M")
+          
 
