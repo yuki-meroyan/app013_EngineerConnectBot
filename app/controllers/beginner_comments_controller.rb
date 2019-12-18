@@ -1,6 +1,6 @@
 class BeginnerCommentsController < ApplicationController
-  before_action :comment_params, only: [:new, :create]
-  before_action :set_beginner, only: [:create]
+  before_action :comment_params, only: [:create]
+  before_action :set_beginner  , only: [:create]
 
   def index
   end
