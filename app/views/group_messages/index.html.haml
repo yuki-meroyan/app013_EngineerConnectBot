@@ -20,7 +20,7 @@
             %li.group__member__list
               = group_user.name
           】
-    #group__message.group__message
+    #group__message.group__message{"data-user_id": current_user.id}
       -# 省略して記述すると「= render @messages」
       = render partial: 'group_message', collection: @group_messages
 
