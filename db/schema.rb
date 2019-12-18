@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_17_141209) do
+ActiveRecord::Schema.define(version: 2019_12_18_105958) do
 
   create_table "beginner_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "comment", null: false
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 2019_12_17_141209) do
     t.index ["name"], name: "index_groups_on_name"
   end
 
+  create_table "intermediate_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "comment", null: false
+    t.bigint "user_id", null: false
+    t.bigint "intermediate_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["intermediate_id"], name: "index_intermediate_comments_on_intermediate_id"
+    t.index ["user_id"], name: "index_intermediate_comments_on_user_id"
+  end
+
   create_table "intermediates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.string "category", default: "", null: false
@@ -101,6 +111,16 @@ ActiveRecord::Schema.define(version: 2019_12_17_141209) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "senior_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "comment", null: false
+    t.bigint "user_id", null: false
+    t.bigint "senior_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["senior_id"], name: "index_senior_comments_on_senior_id"
+    t.index ["user_id"], name: "index_senior_comments_on_user_id"
   end
 
   create_table "seniors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -158,8 +178,12 @@ ActiveRecord::Schema.define(version: 2019_12_17_141209) do
   add_foreign_key "group_messages", "users"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
+  add_foreign_key "intermediate_comments", "intermediates"
+  add_foreign_key "intermediate_comments", "users"
   add_foreign_key "intermediates", "users"
   add_foreign_key "private_messages", "users"
+  add_foreign_key "senior_comments", "seniors"
+  add_foreign_key "senior_comments", "users"
   add_foreign_key "seniors", "users"
   add_foreign_key "user_details", "users"
 end
