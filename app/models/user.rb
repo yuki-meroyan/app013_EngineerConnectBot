@@ -14,7 +14,8 @@ class User < ApplicationRecord
   has_many :groups, through: :group_users
   has_many :group_messages, dependent: :destroy
   has_many :beginner_comments, dependent: :destroy
-
+  has_many :intermediates_comments, dependent: :destroy
+  has_many :senior_comments, dependent: :destroy
 
   has_many :followed_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
   has_many :followeds, through: :followed_relationships
