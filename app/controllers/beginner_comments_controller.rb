@@ -24,7 +24,6 @@ class BeginnerCommentsController < ApplicationController
   end
 
   def set_beginner
-    binding.pry
     @beginner = Beginner.find(params[:beginner_id])
   end
 end
