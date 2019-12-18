@@ -10,6 +10,9 @@
         %td
           = link_to @senior.user.name, user_path(id: @senior.user.id), class: "article__category__content--link"
       %tr
+        %th レベル
+        %td 上級者
+      %tr
         %th カテゴリー
         %td
           = @senior.category
@@ -41,3 +44,6 @@
         %th 詳細
         %td
           = @senior.detail
+
+.form
+  = render 'comments/article_comment', { comments: @comments, comment: @comment, url: "/seniors/" + @senior.id.to_s + "/senior_comments" }
