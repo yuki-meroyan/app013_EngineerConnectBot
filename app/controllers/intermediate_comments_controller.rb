@@ -1,5 +1,5 @@
 class IntermediateCommentsController < ApplicationController
-  before_action :comment_params, only: [:new, :create]
+  before_action :comment_params,   only: [:create]
   before_action :set_intermediate, only: [:create]
 
   def index
