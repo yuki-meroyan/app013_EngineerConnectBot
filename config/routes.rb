@@ -23,10 +23,14 @@ Rails.application.routes.draw do
     end
   end
   resources :beginners do
-    resources :beginner_comments
+    resources :beginner_comments, only: [:index, :create]
   end
-  resources :intermediates
-  resources :seniors
+  resources :intermediates do
+    resources :intermediate_comments, only: [:index, :create]
+  end
+  resources :seniors do
+    resources :senior_comments, only: [:index, :create]
+  end
   resources :groups do
     resources :group_messages
     namespace :api do
