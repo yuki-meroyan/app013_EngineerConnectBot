@@ -1,6 +1,6 @@
 class SeniorCommentsController < ApplicationController
-  before_action :comment_params, only: [:new, :create]
-  before_action :set_senior, only: [:create]
+  before_action :comment_params, only: [:create]
+  before_action :set_senior,     only: [:create]
 
   def index
   end
