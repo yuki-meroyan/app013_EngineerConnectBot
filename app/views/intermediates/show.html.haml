@@ -10,6 +10,9 @@
         %td
           = link_to @intermediate.user.name, user_path(id: @intermediate.user.id), class: "article__category__content--link"
       %tr
+        %th レベル
+        %td 中級者
+      %tr
         %th カテゴリー
         %td
           = @intermediate.category
@@ -34,3 +37,6 @@
         %th 詳細
         %td
           = @intermediate.detail
+
+.form
+  = render 'comments/article_comment', { comments: @comments, comment: @comment, url: "/intermediates/" + @intermediate.id.to_s + "/intermediate_comments" }
