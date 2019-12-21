@@ -96,13 +96,12 @@ ActiveRecord::Schema.define(version: 2019_12_21_070345) do
   create_table "private_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text", null: false
     t.boolean "read_check", default: false
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.integer "send_user_id", null: false
     t.integer "user_delete_flg", default: 0
     t.integer "send_user_delete_flg", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_private_messages_on_user_id"
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -183,7 +182,6 @@ ActiveRecord::Schema.define(version: 2019_12_21_070345) do
   add_foreign_key "intermediate_comments", "intermediates"
   add_foreign_key "intermediate_comments", "users"
   add_foreign_key "intermediates", "users"
-  add_foreign_key "private_messages", "users"
   add_foreign_key "senior_comments", "seniors"
   add_foreign_key "senior_comments", "users"
   add_foreign_key "seniors", "users"
