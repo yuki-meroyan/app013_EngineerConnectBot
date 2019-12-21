@@ -3,7 +3,7 @@
     %h2
       %span.follow-wrapper{id: "user_#{@user.id}"}
     .form__content
-      = image_tag @user.image.url, class: "form__image"
+      = image_tag @user.image.url, class: "form__image" if @user.image.present?
     .form__content
       .form__label
         ニックネーム
