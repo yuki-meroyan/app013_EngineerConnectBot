@@ -1,0 +1,23 @@
+.private__side
+  .private__side__content
+    .private__box
+      #private-from.private__message
+        = icon("fas", "envelope-open-text", class: "footermenu__icon--size")
+        .private__message--jenre
+          受信ボックス
+      - if @send_messages.present?
+        - send_messages.each do |send_message|
+          .private__message__box
+            .private__message__box--name
+              = send_message.user.name
+            .private__message__box--unReadCount
+              6
+      #private-to.private__message
+        = icon("far", "paper-plane", class: "footermenu__icon--size")
+        .private__message--jenre
+          送信ボックス
+      - if messages.present?
+        - messages.each do |message|
+          .private__message__box
+            .private__message__box--name
+              = message.send_user.name
