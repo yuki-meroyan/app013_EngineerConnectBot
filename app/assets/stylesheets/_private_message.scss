@@ -64,9 +64,34 @@
           z-index: 2;
         }
       }
+
+      &__field{
+        height: 200px;
+        width: 700px;
+      }
     }
     &__main{
-      
+      margin: 0 auto;
+
+      &__content{
+        margin: 30px 0;
+        background-color: rgba(211, 211, 211, 0.74);
+      }
+      &__lastMessage{
+        
+
+        &--name{
+          
+        }
+
+        &--text{
+
+        }
+
+        &--time{
+          
+        }
+      }
     }
   }
 }
