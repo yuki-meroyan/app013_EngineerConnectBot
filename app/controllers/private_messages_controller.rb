@@ -9,6 +9,7 @@ class PrivateMessagesController < ApplicationController
   def new
     @message = PrivateMessage.new
     @to_user = params[:send_user_id]
+    @last_message = PrivateMessage.where(user_id: current_user.id, send_user_id: @to_user).or(PrivateMessage.where(user_id: @to_user, send_user_id: current_user.id)).last
   end
 
   def create
@@ -33,7 +34,7 @@ class PrivateMessagesController < ApplicationController
 
   def set_private_message
     # binding.pry
-    @messages = PrivateMessage.where(user_id: current_user.id)
-    @send_messages = PrivateMessage.where(send_user_id: current_user.id)
+    @messages = PrivateMessage.where(user_id: current_user.id).group(:send_user_id)
+    @send_messages = PrivateMessage.where(send_user_id: current_user.id).group(:user_id)
   end
 end
