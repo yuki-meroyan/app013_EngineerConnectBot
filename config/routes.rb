@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     member do
       get :followed, :followers
     end
+    resources :private_messages
   end
   resources :beginners do
     resources :beginner_comments, only: [:index, :create]
