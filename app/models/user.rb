@@ -16,14 +16,14 @@ class User < ApplicationRecord
   has_many :beginner_comments, dependent: :destroy
   has_many :intermediates_comments, dependent: :destroy
   has_many :senior_comments, dependent: :destroy
-  has_many :private_messages, dependent: :destroy
-  has_many :send_user_private_messages, foreign_key: "send_user_id", class_name: "private_message", dependent: :destroy
+  has_many :user     , class_name: 'private_message' , foreign_key: 'user_id'     , dependent: :destroy
+  has_many :send_user, class_name: 'private_message' , foreign_key: 'send_user_id', dependent: :destroy
 
   has_many :followed_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
-  has_many :followeds, through: :followed_relationships
+  has_many :followeds, through: :followed_relationships, source: :followed
 
   has_many :follower_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
-  has_many :followers, through: :follower_relationships
+  has_many :followers, through: :follower_relationships, source: :follower
 
   def followed?(other_user)
     followed_relationships.find_by(followed_id: other_user.id)
