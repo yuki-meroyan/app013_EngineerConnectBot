@@ -1,0 +1,36 @@
+.private-content
+  .private__side
+    .private__side__content
+      .private__box
+        #private-from.private__message
+          = icon("fas", "envelope-open-text", class: "footermenu__icon--size")
+          .private__message--jenre
+            受信ボックス
+        .private__message__box
+          .private__message__box--name
+            Aさん
+          .private__message__box--unReadCount
+            ６
+        .private__message__box
+          .private__message__box--name
+            Bさん
+          .private__message__box--unReadCount
+        .private__message__box
+          .private__message__box--name
+            Cさん
+          .private__message__box--unReadCount
+        #private-to.private__message
+          = icon("far", "paper-plane", class: "footermenu__icon--size")
+          .private__message--jenre
+            送信ボックス
+  .users
+    %h1 フォローしている方の中からメッセージを送ることができます
+    .users__lists
+      - @followeds.each do |followed|
+        .users__list
+          .users__list__image
+            = image_tag followed.image.to_s, alt: "test", class: "form__search__image"
+          .users__list__name
+            = link_to followed.name, user_path(followed.id)
+          .users__list__link
+            = link_to "メッセージを送る", new_user_private_message_path(followed.id)
