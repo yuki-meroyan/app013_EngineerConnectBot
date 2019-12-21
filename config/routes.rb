@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get :followed, :followers
     end
     resources :private_messages
+    get '/private_messages/message_list', to: 'private_messages#message_list'
   end
   resources :beginners do
     resources :beginner_comments, only: [:index, :create]
