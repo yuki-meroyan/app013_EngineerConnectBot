@@ -2,7 +2,7 @@
   %nav#menubar
     %ul
       %li.menuimg.menu1
-        = link_to 'ユーザー', engineer_connect_bots_user_menu_path
+        = link_to 'マイページ', engineer_connect_bots_user_menu_path
         - if user_signed_in?
           %ul.ddmenu
             %li
@@ -24,12 +24,12 @@
             %li
               = link_to "ログイン", new_user_session_path
       %li.menuimg.menu2
-        = link_to '友達', engineer_connect_bots_friend_menu_path
+        = link_to 'フレンド', engineer_connect_bots_friend_menu_path
         %ul.ddmenu
           %li
-            = link_to 'フォローリスト', user_detail_path(current_user) if user_signed_in?
-          %li
             = link_to "ユーザー検索", users_path
+          %li
+            = link_to 'フォローリスト', user_detail_path(current_user) if user_signed_in?
           %li
             = link_to "メッセージを送る", user_private_messages_path(current_user) if user_signed_in?
 
