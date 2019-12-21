@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_105958) do
+ActiveRecord::Schema.define(version: 2019_12_21_070345) do
 
   create_table "beginner_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "comment", null: false
@@ -95,9 +95,11 @@ ActiveRecord::Schema.define(version: 2019_12_18_105958) do
 
   create_table "private_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text", null: false
-    t.string "image"
+    t.boolean "read_check", default: false
     t.bigint "user_id", null: false
-    t.integer "to_user", null: false
+    t.integer "send_user_id", null: false
+    t.integer "user_delete_flg", default: 0
+    t.integer "send_user_delete_flg", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_private_messages_on_user_id"
