@@ -1,25 +1,39 @@
 class PrivateMessagesController < ApplicationController
+  before_action :set_private_message
 
   def index
-    @followers = Relationship.where(follower_id: current_user.id)
-    @followeds = User.where(id: @followers.ids)
-    @from_messages = PrivateMessage.where(user_id: current_user.id)
-    @to_messages = PrivateMessage.where(send_user_id: current_user.id)
+    @followers = current_user.followers
+    @followeds = current_user.followeds
   end
 
   def new
-    @private_message = PrivateMessage.new
+    @message = PrivateMessage.new
+    @to_user = params[:send_user_id]
   end
 
   def create
-    @private_message = current_user.private_messages.new(private_message_params)
+    @message = PrivateMessage.new(private_message_params)
+    if @message.save
+      redirect_to user_private_messages_path(current_user), notice: '送信が完了しました'
+    else
+      redirect_to new_user_private_message_path(user_id: private_message_params[:user_id], send_user_id: private_message_params[:send_user_id]), notice: "送信に失敗しました"
+    end
   end
+
+  def message_list
+
+  end
+
+  private
 
   def private_message_params
-    params.require(:private_message).permit(:text, :image).merge(user_id: current_user.id)
+    # params.permit(:text, :send_user_id).merge(user_id: current_user.id)
+    params.permit(:text, :user_id, :send_user_id)
   end
 
-  def set_private
-    @private = Group.find(params[:private_id])
+  def set_private_message
+    # binding.pry
+    @messages = PrivateMessage.where(user_id: current_user.id)
+    @send_messages = PrivateMessage.where(send_user_id: current_user.id)
   end
 end
