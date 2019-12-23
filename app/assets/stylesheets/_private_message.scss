@@ -78,10 +78,10 @@
         background-color: rgba(211, 211, 211, 0.74);
       }
       &__lastMessage{
-        
+
 
         &--name{
-          
+
         }
 
         &--text{
@@ -89,9 +89,21 @@
         }
 
         &--time{
-          
+
         }
       }
     }
   }
+}
+#private-from{
+  cursor: pointer;
+}
+.private-from-list{
+  display: none;
+}
+#private-to{
+  cursor: pointer;
+}
+.private-to-list{
+  display: none;
 }
