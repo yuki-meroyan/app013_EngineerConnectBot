@@ -5,19 +5,24 @@
         = icon("fas", "envelope-open-text", class: "footermenu__icon--size")
         .private__message--jenre
           受信ボックス
-      - if @send_messages.present?
-        - send_messages.each do |send_message|
-          .private__message__box
+      .private-from-list
+        - if @send_messages.present?
+          - send_messages.each do |send_message|
             .private__message__box--name
-              = send_message.user.name
-            .private__message__box--unReadCount
-              6
+              = link_to user_private_messages_message_list_path(user_id: message.user.id, send_user_id: message.send_user.id) do
+                = send_message.user.name
+              - send_message_count = send_message.un_read_message_check(current_user.id, send_message.user.id)
+              - if send_message_count > 0
+                .private__message__box--unReadCount
+                  = send_message_count
       #private-to.private__message
         = icon("far", "paper-plane", class: "footermenu__icon--size")
         .private__message--jenre
           送信ボックス
-      - if messages.present?
-        - messages.each do |message|
-          .private__message__box
-            .private__message__box--name
-              = message.send_user.name
+      .private-to-list
+        - if messages.present?
+          - messages.each do |message|
+            .private__message__box
+              = link_to user_private_messages_message_list_path(send_user_id: message.send_user.id) do
+                .private__message__box--name
+                  = message.send_user.name
