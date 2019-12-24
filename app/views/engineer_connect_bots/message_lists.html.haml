@@ -5,7 +5,24 @@
       %h1
         = @target_user.name
         = "さんとのやりとり（" + @target_box + "ボックス）"
-      - @message_lists.each do |message_list|
-        = message_list.created_at.strftime("%y-%m-%d %p %I:%M")
-        = message_list.text
-        確認する
+      - unless @message_lists.present?
+        .private__main__content
+          %h3 やりとりしたメッセージはありません
+      - else
+        %table.private__message__list--table
+          %tr.private__message__list--top
+            %th.private__message__list--first-column 日時
+            %th.private__message__list--second-column メッセージ
+            %th.private__message__list--third-column 既読/未読
+            %th.private__message__list--fourth-column 確認
+          - @message_lists.each do |message_list|
+            %tr.private__message__list--top
+              %td.private__message__list--first-column
+                = message_list.created_at.strftime("%y-%m-%d %p %I:%M")
+              %td.private__message__list--second-column
+                = message_list.text
+              %td.private__message__list--third-column
+                - if message_list.read_check == false ? read_check = "未読" : read_check = "既読"
+                  = read_check
+              %td.private__message__list--fourth-column
+                = link_to "メール内容を確認する", user_private_message_path(id: message_list.id, user_id: @target_user.id)
