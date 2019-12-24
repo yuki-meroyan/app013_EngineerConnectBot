@@ -21,8 +21,8 @@ class PrivateMessagesController < ApplicationController
     end
   end
 
-  def message_list
 
+  def show
   end
 
   private
