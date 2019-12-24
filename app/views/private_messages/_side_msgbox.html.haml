@@ -9,7 +9,7 @@
         - if @send_messages.present?
           - send_messages.each do |send_message|
             .private__message__box--name
-              = link_to user_private_messages_message_list_path(user_id: message.user.id, send_user_id: message.send_user.id) do
+              = link_to engineer_connect_bots_message_lists_path(user_id: message.user.id, target_box: "受信" ) do
                 = send_message.user.name
               - send_message_count = send_message.un_read_message_check(current_user.id, send_message.user.id)
               - if send_message_count > 0
@@ -23,6 +23,6 @@
         - if messages.present?
           - messages.each do |message|
             .private__message__box
-              = link_to user_private_messages_message_list_path(send_user_id: message.send_user.id) do
+              = link_to engineer_connect_bots_message_lists_path(send_user_id: message.send_user.id, target_box: "送信") do
                 .private__message__box--name
                   = message.send_user.name
