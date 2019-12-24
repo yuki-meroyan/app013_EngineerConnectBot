@@ -23,6 +23,10 @@ class PrivateMessagesController < ApplicationController
 
 
   def show
+    @message = PrivateMessage.find_by(id: params[:id])
+    if @message.read_check == false
+      @message.update( read_check: true )
+    end
   end
 
   private
@@ -33,7 +37,6 @@ class PrivateMessagesController < ApplicationController
   end
 
   def set_private_message
-    # binding.pry
     @messages = PrivateMessage.where(user_id: current_user.id).group(:send_user_id)
     @send_messages = PrivateMessage.where(send_user_id: current_user.id).group(:user_id)
   end
