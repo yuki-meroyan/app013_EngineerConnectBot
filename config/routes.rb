@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/engineer_connect_bots/article_mine', to: 'engineer_connect_bots#article_mine'
   get '/engineer_connect_bots/article_all', to: 'engineer_connect_bots#article_all'
   get '/engineer_connect_bots/have_group', to: 'engineer_connect_bots#have_group'
+  get '/engineer_connect_bots/message_lists', to: 'engineer_connect_bots#message_lists'
 
   resources :user_details
   resources :users do
@@ -22,7 +23,6 @@ Rails.application.routes.draw do
       get :followed, :followers
     end
     resources :private_messages
-    get '/private_messages/message_list', to: 'private_messages#message_list'
   end
   resources :beginners do
     resources :beginner_comments, only: [:index, :create]
