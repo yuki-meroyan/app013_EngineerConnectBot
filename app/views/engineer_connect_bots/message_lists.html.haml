@@ -1,0 +1,11 @@
+.private-content
+  = render 'private_messages/side_msgbox', { messages: @messages, send_messages: @send_messages }
+  .private__message__lists
+    .private__message__list
+      %h1
+        = @target_user.name
+        = "さんとのやりとり（" + @target_box + "ボックス）"
+      - @message_lists.each do |message_list|
+        = message_list.created_at.strftime("%y-%m-%d %p %I:%M")
+        = message_list.text
+        確認する
