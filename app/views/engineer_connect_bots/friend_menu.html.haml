@@ -1,10 +1,10 @@
 .article__contents
   .article__category
     .article__category--text フレンドメニュー
-  - if user_signed_in?
-    .article__content
-      = link_to '友達確認', user_detail_path(current_user)
-    .article__content
-      = link_to "メッセージを送る", user_private_messages_path(current_user) if user_signed_in?
   .article__content
     = link_to "ユーザー検索", users_path
+  - if user_signed_in?
+    .article__content
+      = link_to 'フォローリスト', user_detail_path(current_user)
+    .article__content
+      = link_to "メッセージを送る", user_private_messages_path(current_user) if user_signed_in?
