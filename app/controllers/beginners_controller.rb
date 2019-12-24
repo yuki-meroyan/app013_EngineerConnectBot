@@ -21,7 +21,8 @@ class BeginnersController < ApplicationController
   end
 
   def show
-
+    @comment = BeginnerComment.new
+    @comments = @beginner.beginner_comments.order(created_at: "DESC").includes(:user)
   end
 
   def edit

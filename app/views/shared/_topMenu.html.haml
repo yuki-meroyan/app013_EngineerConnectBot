@@ -2,7 +2,7 @@
   %nav#menubar
     %ul
       %li.menuimg.menu1
-        = link_to 'ユーザー', root_path
+        = link_to 'マイページ', engineer_connect_bots_user_menu_path
         - if user_signed_in?
           %ul.ddmenu
             %li
@@ -16,10 +16,6 @@
               %li
                 = link_to '詳細登録', new_user_detail_path
             %li
-              = link_to '友達確認', user_path(current_user)
-            %li
-              = link_to "ユーザー検索", users_path
-            %li
               = link_to 'ログアウト', destroy_user_session_path, method: :delete
         - else
           %ul.ddmenu
@@ -28,7 +24,17 @@
             %li
               = link_to "ログイン", new_user_session_path
       %li.menuimg.menu2
-        = link_to 'グループ', root_path
+        = link_to 'フレンド', engineer_connect_bots_friend_menu_path
+        %ul.ddmenu
+          %li
+            = link_to "ユーザー検索", users_path
+          %li
+            = link_to 'フォローリスト', user_detail_path(current_user) if user_signed_in?
+          %li
+            = link_to "メッセージを送る", user_private_messages_path(current_user) if user_signed_in?
+
+      %li.menuimg.menu3
+        = link_to 'グループ', engineer_connect_bots_group_menu_path
         %ul.ddmenu
           %li
             = link_to 'グループ作成', new_group_path
@@ -37,8 +43,8 @@
           %li
             = link_to 'グループ検索', groups_path
 
-      %li.menuimg.menu3
-        = link_to '掲示板', engineer_connect_bots_article_path
+      %li.menuimg.menu4
+        = link_to '掲示板', engineer_connect_bots_article_menu_path
         %ul.ddmenu
           %li
             = link_to '投稿新規作成', engineer_connect_bots_article_post_path
@@ -47,6 +53,3 @@
           %li
             = link_to '投稿記事確認', engineer_connect_bots_article_mine_path
 
-      %li.menuimg.menu4
-        = link_to '作成中', root_path
-        %ul.ddmenu

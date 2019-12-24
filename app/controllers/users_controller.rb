@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @follow = Relationship.where('follower_id = ? and followed_id = ?', @user.id, current_user.id)
   end
 
   def followed

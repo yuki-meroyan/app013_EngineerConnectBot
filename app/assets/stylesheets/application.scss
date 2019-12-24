@@ -1,4 +1,5 @@
 @import "reset";
+@import 'font-awesome-sprockets';
 @import "font-awesome";
 @import "common";
 @import "side";
@@ -8,5 +9,8 @@
 @import "group";
 @import "detail";
 @import "search";
+@import "comment";
+@import "user";
+@import "private_message";
 @import "templateParty-style";
 @import "templateParty-fixmenu";

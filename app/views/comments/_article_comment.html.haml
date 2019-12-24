@@ -1,0 +1,32 @@
+#comments.comments
+  .comments__form
+    = form_with(model: comment, url: url, local: true) do |f|
+      .comments__label
+        = f.label :comment, class: "comments__label--text" do
+          _/_/_/_/_/_/_/_/_/_/_/_/_/_/_  コメントフォーム  _/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+      .comments__box
+        = f.text_area :comment, class: "comments__box--field", placeholder: 'コメントを入力してください'
+      .form__content
+        = f.submit "コメントする", class: "form__button"
+  .comments__contents
+    - if comments.present?
+      - comments.each do |comment|
+        .comments__content
+          .comments__user
+            .comments__user__icon
+              = link_to user_path(comment.user) do
+                = image_tag comment.user.image.url, class: "comments__user__image"
+            .comments__user__name
+              = comment.user.name
+            .comments__time
+              = comment.created_at.strftime("%y/%m/%d %H:%M")
+          .comments__text
+            .comments__text__box
+              = comment.comment
+    - else
+      .comments__content
+        .comments__user
+          .comments__user__icon
+        .comments__text
+          コメントはありません
+

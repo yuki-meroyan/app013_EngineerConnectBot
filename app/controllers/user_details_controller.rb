@@ -1,6 +1,6 @@
 class UserDetailsController < ApplicationController
   before_action :user_detail_params, only: [:create, :update]
-  before_action :set_user_detail   , only: [:edit  , :update]
+  before_action :set_user_detail   , only: [:edit  , :update, :show]
 
   def new
     @user_detail = UserDetail.new
@@ -42,6 +42,9 @@ class UserDetailsController < ApplicationController
 
   def set_user_detail
     @user_detail = UserDetail.find_by(user_id: current_user.id)
+    unless @user_detail.present?
+      redirect_to new_user_detail_path(current_user)
+    end
   end
 
 end

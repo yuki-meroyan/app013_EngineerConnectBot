@@ -7,22 +7,37 @@ Rails.application.routes.draw do
   root to: 'engineer_connect_bots#top'
   get '/engineer_connect_bots/top', to: 'engineer_connect_bots#top'
   get '/engineer_connect_bots/search', to: 'engineer_connect_bots#search'
-  get '/engineer_connect_bots/article', to: 'engineer_connect_bots#article'
+  get '/engineer_connect_bots/user_menu', to: 'engineer_connect_bots#user_menu'
+  get '/engineer_connect_bots/friend_menu', to: 'engineer_connect_bots#friend_menu'
+  get '/engineer_connect_bots/group_menu', to: 'engineer_connect_bots#group_menu'
+  get '/engineer_connect_bots/article_menu', to: 'engineer_connect_bots#article_menu'
   get '/engineer_connect_bots/article_post', to: 'engineer_connect_bots#article_post'
   get '/engineer_connect_bots/article_mine', to: 'engineer_connect_bots#article_mine'
   get '/engineer_connect_bots/article_all', to: 'engineer_connect_bots#article_all'
   get '/engineer_connect_bots/have_group', to: 'engineer_connect_bots#have_group'
+  get '/engineer_connect_bots/message_lists', to: 'engineer_connect_bots#message_lists'
+
   resources :user_details
   resources :users do
     member do
       get :followed, :followers
     end
+    resources :private_messages
   end
-  resources :beginners
-  resources :intermediates
-  resources :seniors
+  resources :beginners do
+    resources :beginner_comments, only: [:index, :create]
+  end
+  resources :intermediates do
+    resources :intermediate_comments, only: [:index, :create]
+  end
+  resources :seniors do
+    resources :senior_comments, only: [:index, :create]
+  end
   resources :groups do
     resources :group_messages
+    namespace :api do
+      resources :group_messages, only: :index, defaults: { format: 'json' }
+    end
   end
   resources :relationships, only: [:create, :destroy]
 end

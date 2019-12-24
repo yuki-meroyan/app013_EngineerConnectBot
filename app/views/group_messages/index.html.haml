@@ -8,7 +8,7 @@
               = group.name
             .group__message
               = group.show_last_message
-  .group__main
+  .group__main{"data-group_id": @group.id}
     .group__header
       .group__header__box
         グループ名
@@ -20,16 +20,16 @@
             %li.group__member__list
               = group_user.name
           】
-    .group__message
+    #group__message.group__message{"data-user_id": current_user.id}
       -# 省略して記述すると「= render @messages」
       = render partial: 'group_message', collection: @group_messages
 
     .message__form
-      = form_with(model: [@group, @group_message], local: true) do |f|
+      = form_with model: [@group, @group_message], id: "new-group-message", local: true do |f|
         .message__form__box
           = f.text_field :text, id: 'message__form__text', class: ".message__form__text", placeholder: 'メッセージを入力してください'
           = f.label :image, class: 'message__form__image' do
-            = fa_icon 'picture-o 2x', class: 'fa fa-image'
+            = icon("fas", "camera-retro", class: "footermenu__icon--size")
             = f.file_field :image, class: 'message__form__image__file'
           = f.submit '送信', class: 'message__form__btn'
         -# = f.submit 'Send', class: 'submit-btn', onsubmit: "return checkNijyuSubmit();"

@@ -1,0 +1,27 @@
+.private-content
+  = render 'side_msgbox', { messages: @messages, send_messages: @send_messages }
+
+  .private__main
+    - if @last_message.present?
+      .private__main__content
+        %h3 最後のメッセージ
+        .private__main__lastMessage--name
+          送信者　　：
+          = @last_message.user.name
+        .private__main__lastMessage
+          .private__main__lastMessage--text
+            メッセージ：
+            = @last_message.text
+        .private__main__lastMessage--time
+          送信日時　：
+          = @last_message.created_at.strftime("%y-%m-%d %p %I:%M")
+    - else
+      .private__main__content
+        %h3 やりとりしたメッセージはありません
+    = form_with(model: @private_message, url: user_private_messages_path, method: "POST", local: true) do |f|
+      .form__content
+        = f.text_area :text, class: "private__message__field", placeholder: '送りたい内容を入力してください'
+      .form__content
+        = f.submit "送信する", class: "form__button"
+      = f.text_field :user_id, value: current_user.id, type: "hidden"
+      = f.text_field :send_user_id, value: @to_user, type: "hidden"
