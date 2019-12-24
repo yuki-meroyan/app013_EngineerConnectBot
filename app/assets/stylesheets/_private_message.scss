@@ -20,14 +20,6 @@
       }
     }
 
-    &__lists{
-      width: calc(100% - 350px);
-    }
-
-    &__list{
-      
-    }
-
     &__box{
     }
 
@@ -40,6 +32,7 @@
       background-color: $box-color;
       max-height: 120px;
       z-index: 1;
+
       &--jenre{
         font-size: 20px;
         font-weight: bold;
@@ -76,6 +69,32 @@
       &__field{
         height: 200px;
         width: 700px;
+      }
+
+      &__lists{
+        width: calc(100% - 350px);
+      }
+
+      &__list{
+        width: 100%;
+        &--table{
+          width: 100%;
+        }
+        &--top{
+          width: 100%;
+        }
+        &--first-column{
+          width: 15%;
+        }
+        &--second-column{
+          width: 50%;
+        }
+        &--third-column{
+          width: 10%;
+        }
+        &--fourth-column{
+          width: 25%;
+        }
       }
     }
     &__main{
