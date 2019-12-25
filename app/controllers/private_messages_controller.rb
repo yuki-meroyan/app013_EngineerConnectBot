@@ -24,7 +24,7 @@ class PrivateMessagesController < ApplicationController
 
   def show
     @message = PrivateMessage.find_by(id: params[:id])
-    if @message.read_check == false
+    if @message.read_check == false && params[:user_id].to_i == @message.user.id
       @message.update( read_check: true )
     end
   end
