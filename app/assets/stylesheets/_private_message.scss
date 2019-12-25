@@ -38,6 +38,17 @@
         font-weight: bold;
       }
 
+      &__return{
+        display: none;
+
+        &--button{
+          text-align: center;
+          margin: 0 auto;
+          width: 20%;
+          cursor: pointer;
+        }
+      }
+
       &__box{
         position: relative;
         text-align: left;
@@ -101,6 +112,7 @@
       margin: 0 auto;
 
       &__content{
+        width: 700px;
         margin: 30px 0;
         background-color: rgba(211, 211, 211, 0.74);
       }
