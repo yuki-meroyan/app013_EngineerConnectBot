@@ -96,6 +96,51 @@
           margin: 15px 0 10px 20px;
         }
 
+        table {
+          border-collapse: collapse;
+          margin: 0 auto;
+          padding: 0;
+          width: 100%;
+
+          tr {
+            background-color: #fff;
+            border-bottom: 2px solid #fff;
+          }
+          tr:nth-child(even){
+            background-color: #eee;
+          }
+
+          th,td {
+            padding: .35em 1em;
+          }
+
+          thead th {
+            font-size: .85em;
+            padding: 1em;
+          }
+
+          thead tr{
+            background-color: $box-havycolor;
+            color:#fff;
+          }
+
+          tbody th {
+            text-align: left;
+            font-size: .8em;
+          }
+
+          .date .message .read{
+            text-align: left;
+            font-size: .75em;
+          }
+
+          .verification{
+            color: $font-color;
+            // font-weight: bold;
+          }
+
+        }
+
         &--table{
           width: 100%;
         }
