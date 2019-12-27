@@ -3,8 +3,9 @@
   .private__message__lists
     .private__message__list
       %h1
-        = @target_user.name
-        = "さんとのやりとり（" + @target_box + "ボックス）"
+        - if @target_box != "送信"
+          = @target_user.name
+        = @target_box + "ボックス"
       - unless @message_lists.present?
         .private__main__content
           %h3 やりとりしたメッセージはありません
@@ -15,6 +16,8 @@
             %th.private__message__list--second-column メッセージ
             - if @target_box != "送信"
               %th.private__message__list--third-column 既読/未読
+            - else
+              %th.private__message__list--third-column 宛先
             %th.private__message__list--fourth-column 確認
           - @message_lists.each do |message_list|
             %tr.private__message__list--top
@@ -26,5 +29,10 @@
                 %td.private__message__list--third-column
                   - if message_list.read_check == false ? read_check = "未読" : read_check = "既読"
                     = read_check
-              %td.private__message__list--fourth-column
-                = link_to "メール内容を確認する", user_private_message_path(id: message_list.id, user_id: @target_user.id)
+                %td.private__message__list--fourth-column
+                  = link_to "メール内容を確認する", user_private_message_path(id: message_list.id, user_id: message_list.send_user.id, send_user_id: message_list.user.id , target_box: @target_box)
+              - else
+                %td.private__message__list--third-column
+                  = message_list.send_user.name
+                %td.private__message__list--fourth-column
+                  = link_to "メール内容を確認する", user_private_message_path(id: message_list.id, user_id: message_list.user.id, send_user_id: message_list.send_user.id , target_box: @target_box)
