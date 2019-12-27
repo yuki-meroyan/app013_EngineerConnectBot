@@ -13,4 +13,8 @@ class ApplicationRecord < ActiveRecord::Base
       # content_tag(:div, content_tag(:p, message_count), class: 'private__message__box--unReadCount')
     end
   end
+
+  def short_description
+    description[0, 9] + '...'
+  end
 end
