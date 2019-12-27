@@ -6,8 +6,12 @@
     .private__main__content
       %h3 メッセージ内容
       .private__main__lastMessage--name
-        送信者　　：
-        = @message.user.name
+        - if @target_box == "受信"
+          送信者　　：
+          = @message.user.name
+        - else
+          送信宛　　：
+          = @message.send_user.name
       .private__main__lastMessage
         .private__main__lastMessage--text
           メッセージ：
@@ -16,12 +20,19 @@
         送信日時　：
         = @message.user.created_at.strftime("%y-%m-%d %p %I:%M")
     #return-button.private__message__return--button.button
-      返信する
-    .private__message__return
-      = form_with(model: @private_message, url: user_private_messages_path, method: "POST", local: true) do |f|
-        .form__content
-          = f.text_area :text, class: "private__message__field"
-        .form__content
-          = f.submit "送信する", class: "form__button"
-        = f.text_field :user_id, value: @message.user.id, type: "hidden"
-        = f.text_field :send_user_id, value: current_user.id, type: "hidden"
+      - if @target_box == "受信"
+        = link_to "返信する", new_user_private_message_path(user_id: current_user.id, send_user_id: @message.user.id)
+      - else
+        = link_to "返信する", new_user_private_message_path(user_id: current_user.id, send_user_id: @message.send_user.id)
+    -# .private__message__return
+    -#   = form_with(model: @private_message, url: user_private_messages_path, method: "POST", local: true) do |f|
+    -#     .form__content
+    -#       = f.text_area :text, class: "private__message__field"
+    -#     .form__content
+    -#       = f.submit "送信する", class: "form__button"
+    -#     - if @target_box == "受信"
+    -#       = f.text_field :user_id, value: @message.user.id, type: "hidden"
+    -#       = f.text_field :send_user_id, value: current_user.id, type: "hidden"
+    -#     - else
+    -#       = f.text_field :user_id, value: current_user.id, type: "hidden"
+    -#       = f.text_field :send_user_id, value: @message.send_user_id, type: "hidden"
