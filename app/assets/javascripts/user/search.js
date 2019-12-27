@@ -2,13 +2,26 @@ $(function(){
   var user_search_list = $('#form__search__user__result')
 
   function appendSearchUser(user){
-    var html = `<div class="form__search__result__box">
-                  <a href="/users/${user.user_id}">
+    var html = `<div class="users__list">
+                  <div class="users__list__image">
                     <img class="form__search__image" src="${user.user_image.url}">
-                  </a>
-                  <div class="form__search__name">
-                    ${user.user_name}
                   </div>
+                  <div class="users__list__name">
+                    <a href="/users/${user.user_id}">${user.user_name}</a>
+                  </div>
+                  <div class="users__list__link">
+                    <a href="/">追加</a>
+                  </div>
+                </div>
+                `
+    user_search_list.append(html);
+  }
+
+  function appendErrMsgToHTML(msg){
+    var html = `<div class="users__list">
+                  <p class="users__list__errmsg">
+                    ${msg}
+                  </p>
                 </div>
                 `
     user_search_list.append(html);
