@@ -6,7 +6,7 @@ $(function(){
     $('.private-to-list').toggle("slow");
   });
 
-  $('#return-button').on('click', function(){
-    $('.private__message__return').show("slideDown");
-  });
+  // $('#return-button').on('click', function(){
+  //   $('.private__message__return').show("slideDown");
+  // });
 })
