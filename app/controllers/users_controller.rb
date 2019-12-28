@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
 
   def index
+    # binding.pry
     # @users = User.where('name LIKE(?) and id != ?', "%#{params[:keyword]}%", current_user.id).where.not(id: params[:selected_users])
-    @users = User.where('name LIKE(?) and id != ?', "%#{params[:keyword]}%", current_user.id).where.not(id: params[:selected_users])
+    # @users = User.where('name LIKE(?) and id != ?', "%#{params[:keyword]}%", current_user.id).where.not(id: params[:selected_users]).includes(:followers)
+    # @users = User.where('name LIKE(?) and id != ?', "%#{params[:keyword]}%", current_user.id).where.not(id: params[:selected_users]).includes(:relationships)
+    @users = User.where('name LIKE(?) and id != ?', "%#{params[:keyword]}%", current_user.id).where.not(id: params[:selected_users]).eager_load(:followers).where(followers: { id: current_user.id })
+    # @relationships = Relationship.where('name LIKE(?) and id != ?', "%#{params[:keyword]}%", current_user.id).where.not(id: params[:selected_users])
+    binding.pry
+    # @myUserId = current_user.id
     respond_to do |format|
       format.html
       format.json
