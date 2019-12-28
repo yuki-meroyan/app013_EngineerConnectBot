@@ -1,6 +1,6 @@
 .form
   .form__contents
     .form__content
-      %input#search__user__field.form__search{placeholder: "検索したいユーザー名を入力"}
+      %input#search__user__field.form__search{"data-my_id": current_user.id, placeholder: "検索したいユーザー名を入力"}
   .users
     #form__search__user__result.users__lists
