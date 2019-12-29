@@ -3,11 +3,11 @@
   .users
     %h1 フォローしている方の中からメッセージを送ることができます
     .users__lists
-      - @followeds.each do |followed|
+      - current_user.all_following.each do |following|
         .users__list
           .users__list__image
-            = image_tag followed.image.to_s, alt: "test", class: "form__search__image"
+            = image_tag following.image.to_s, alt: "test", class: "form__search__image"
           .users__list__name
-            = link_to followed.name, user_path(followed.id)
+            = link_to following.name, user_path(following.id)
           .users__list__link
-            = link_to "メッセージを送る", new_user_private_message_path(user_id: current_user.id, send_user_id: followed.id)
+            = link_to "メッセージを送る", new_user_private_message_path(user_id: current_user.id, send_user_id: following.id)
