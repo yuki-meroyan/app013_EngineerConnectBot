@@ -81,3 +81,4 @@ gem 'jquery-rails'
 gem 'ransack'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'fog-aws'
+gem "acts_as_follower", github: "tcocca/acts_as_follower"
