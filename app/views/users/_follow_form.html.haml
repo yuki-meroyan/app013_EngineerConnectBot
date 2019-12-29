@@ -1,5 +1,7 @@
-- unless current_user.id == @user.id
-  - if current_user.followed?(@user)
-    = render 'users/unfollow', user: user
+- unless current_user.id == user.id
+  - if current_user.following? user
+    .unfollow
+      = link_to "フォローを外す", {controller: :users,action: :unfollow,user_id: user.id}, method: :put
   - else
-    = render 'users/follow', user: user
+    .follow
+      = link_to "フォローをする", {controller: :users,action: :follow,user_id: user.id}, method: :put
