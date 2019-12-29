@@ -29,7 +29,7 @@
           %li
             = link_to "ユーザー検索", users_path
           %li
-            = link_to 'フォローリスト', user_detail_path(current_user) if user_signed_in?
+            = link_to 'フォローリスト', '/users/follow_list/' + current_user.id.to_s if user_signed_in?
           %li
             = link_to "メッセージを送る", user_private_messages_path(current_user) if user_signed_in?
 
