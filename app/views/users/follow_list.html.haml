@@ -1,0 +1,4 @@
+フォローしている人
+= render 'following_list', user: @user if @user.all_following.present?
+フォローしてくれている人
+= render 'follower_list', user: @user if @user.followers.present?
