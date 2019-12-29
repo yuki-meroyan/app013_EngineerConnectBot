@@ -16,6 +16,13 @@ Rails.application.routes.draw do
   get '/engineer_connect_bots/article_all', to: 'engineer_connect_bots#article_all'
   get '/engineer_connect_bots/have_group', to: 'engineer_connect_bots#have_group'
   get '/engineer_connect_bots/message_lists', to: 'engineer_connect_bots#message_lists'
+  #フォローとフォローを外すアクション
+  put 'users/follow/:user_id' => 'users#follow'
+  put 'users/unfollow/:user_id' => 'users#unfollow'
+
+  #フォロー・フォロワーの一覧ページ
+  get 'users/follow_list/:user_id' => 'users#follow_list'
+  # get 'users/follower_list/:user_id' => 'users#follower_list'
 
   resources :user_details
   resources :users do
@@ -39,5 +46,4 @@ Rails.application.routes.draw do
       resources :group_messages, only: :index, defaults: { format: 'json' }
     end
   end
-  resources :relationships, only: [:create, :destroy]
 end
