@@ -1,0 +1,8 @@
+.users
+  #form__search__user__result.users__lists
+    - user.all_following.each do |follow_user|
+      .users__list
+        .users__list__image
+          %img.form__search__image{src: follow_user.image.url}
+        .users__list__name
+          = link_to follow_user.name, user_path(follow_user.id)
