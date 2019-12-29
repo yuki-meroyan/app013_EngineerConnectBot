@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   #フォローしてる人の一覧ページ & #フォロワーの一覧ページ
   def follow_list
     @user = User.find(params[:user_id])
-    binding.pry
+    # binding.pry
   end
 
   # def followed
