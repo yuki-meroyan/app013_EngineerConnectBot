@@ -1,6 +1,42 @@
 .form
   .form__contents
-    .form__content
-      %input#search__user__field.form__search{"data-my_id": current_user.id, placeholder: "検索したいユーザー名を入力"}
+    = search_form_for @user, as: :x, class: "mb-5" do |f|
+      .form__content
+        = f.label :name_cont, '検索したいユーザー名を入力', class: 'col-sm-2 col-form-label form__content__title'
+      .form__content
+        = f.search_field :name_cont, class: 'form-control form__content__search'
+      .form__content
+        = f.submit class: 'btn btn-outline-primary form__button'
+        .request__contents
+          .request__content
   .users
     #form__search__user__result.users__lists
+      - if @users.present?
+        - @users.each do |user|
+          .users__list
+            .users__list__image
+              %img.form__search__image{src: user.image.url}
+            .users__list__name
+              = link_to user.name, user_path(user.id)
+            #follow_form
+              - unless current_user.id == user.id
+                - if current_user.following? user
+                  .btn.unfollow
+                    = link_to "フォローを外す", {controller: :users,action: :unfollow,user_id: user.id}, method: :put
+                - else
+                  .btn.follow
+                    = link_to "フォローをする", {controller: :users,action: :follow,user_id: user.id}, method: :put
+      - else
+        .users__list
+          該当するユーザーはいません
+-# %form.edit_relationship{"accept-charset": "UTF-8", action: relationship_path(user.follower_id), "data-remote" => "true", id: "edit_relationship_" + user.follower_id, method: "post"}
+-#   %input{name: "utf8", type: "hidden", value: "✓"}
+-#   %input{name: "_method", type: "hidden", value: "delete"}
+-#   %input{class: 'btn btn-large', "data-disable-with" => "Unfollow", name: "commit", type: "submit", value: "フォローを外す"}
+
+-# .form
+-#   .form__contents
+-#     .form__content
+-#       %input#search__user__field.form__search{"data-my_id": current_user.id, placeholder: "検索したいユーザー名を入力"}
+-#   .users
+-#     #form__search__user__result.users__lists
