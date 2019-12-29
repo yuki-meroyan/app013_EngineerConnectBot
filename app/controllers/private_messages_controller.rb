@@ -2,8 +2,6 @@ class PrivateMessagesController < ApplicationController
   before_action :set_private_message, except: [:create]
 
   def index
-    @followers = current_user.followers
-    @followeds = current_user.followeds
   end
 
   def new
