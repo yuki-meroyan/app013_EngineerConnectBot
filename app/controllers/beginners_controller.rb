@@ -1,6 +1,7 @@
 class BeginnersController < ApplicationController
-  before_action :beginner_params, only: [:create, :update]
-  before_action :set_beginner   , only: [:edit  , :update, :show]
+  before_action :user_signed_check, only: [:new, :create]
+  before_action :beginner_params  , only: [:create, :update]
+  before_action :set_beginner     , only: [:edit  , :update, :show]
 
   def index
     @beginner = Beginner.ransack(params[:q])
