@@ -1,4 +1,5 @@
 class IntermediatesController < ApplicationController
+  before_action :user_signed_check  , only: [:new   , :update, :create]
   before_action :intermediate_params, only: [:create, :update]
   before_action :set_intermediate   , only: [:edit  , :update, :show]
 
