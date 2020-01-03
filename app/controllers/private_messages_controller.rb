@@ -1,4 +1,5 @@
 class PrivateMessagesController < ApplicationController
+  before_action :user_signed_check  , only:   [:create, :update, :new]
   before_action :set_private_message, except: [:create]
 
   def index
