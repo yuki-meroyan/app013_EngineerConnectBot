@@ -1,8 +1,12 @@
 .users
   #form__search__user__result.users__lists
-    - user.followers.each do |follow_user|
+    - if user.followers_count != 0
+      - user.followers.each do |follow_user|
+        .users__list
+          .users__list__image
+            %img.form__search__image{src: follow_user.image.url}
+          .users__list__name
+            = link_to follow_user.name, user_path(follow_user.id)
+    - else
       .users__list
-        .users__list__image
-          %img.form__search__image{src: follow_user.image.url}
-        .users__list__name
-          = link_to follow_user.name, user_path(follow_user.id)
+        フォロワー0人
