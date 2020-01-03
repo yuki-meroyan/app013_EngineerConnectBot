@@ -1,6 +1,7 @@
 class IntermediateCommentsController < ApplicationController
-  before_action :comment_params,   only: [:create]
-  before_action :set_intermediate, only: [:create]
+  before_action :user_signed_check, only: [:create]
+  before_action :comment_params   , only: [:create]
+  before_action :set_intermediate , only: [:create]
 
   def index
   end
