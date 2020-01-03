@@ -1,8 +1,9 @@
 .article__contents
   .article__category
     .article__category--text 初級者カテゴリー
-  .article__content
-    = link_to "初級者カテゴリー作成", new_beginner_path
+  - if user_signed_in?
+    .article__content
+      = link_to "初級者カテゴリー作成", new_beginner_path
   .article__content
     = link_to "初級者カテゴリー検索", beginners_path
   .article__content
@@ -10,8 +11,9 @@
 
   .article__category
     .article__category--text 中級者カテゴリー
-  .article__content
-    = link_to "中級者カテゴリー作成", new_intermediate_path
+  - if user_signed_in?
+    .article__content
+      = link_to "中級者カテゴリー作成", new_intermediate_path
   .article__content
     = link_to "中級者カテゴリー検索", intermediates_path
   .article__content
@@ -19,8 +21,9 @@
 
   .article__category
     .article__category--text 上級者カテゴリー
-  .article__content
-    = link_to "上級者カテゴリー作成", new_senior_path
+  - if user_signed_in?
+    .article__content
+      = link_to "上級者カテゴリー作成", new_senior_path
   .article__content
     = link_to "上級者カテゴリー検索", seniors_path
   .article__content
