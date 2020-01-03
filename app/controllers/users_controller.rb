@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :user_signed_check
 
   def index
     @user = User.ransack(params[:q])
