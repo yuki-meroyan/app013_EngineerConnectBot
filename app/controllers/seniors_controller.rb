@@ -1,6 +1,7 @@
 class SeniorsController < ApplicationController
-  before_action :senior_params, only: [:create, :update]
-  before_action :set_senior   , only: [:edit  , :update, :show]
+  before_action :user_signed_check, only: [:new   , :update, :create]
+  before_action :senior_params    , only: [:create, :update]
+  before_action :set_senior       , only: [:edit  , :update, :show]
 
   def index
     @senior = Senior.ransack(params[:x], search_key: :x)
