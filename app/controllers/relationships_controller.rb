@@ -1,4 +1,6 @@
 class RelationshipsController < ApplicationController
+  before_action :user_signed_check, only: [:create, :destroy]
+
   def create
     @user = User.find(params[:relationship][:followed_id])
     current_user.follow!(@user)

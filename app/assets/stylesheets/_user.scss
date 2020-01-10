@@ -19,6 +19,11 @@
     margin: 5px 0;
     width: 200px;
     justify-content: space-between;
+
+    a{
+      text-decoration-line: none;
+    }
+
     &__image{
       margin: 0 auto;
       line-height: 120px;
@@ -32,9 +37,17 @@
       }
     }
     &__link{
-      a{
-        color: rgb(235, 182, 123);
-      }
+    }
+    &__errmsg{
     }
   }
+}
+
+#follow_form .unfollow a{
+  color: rgb(148, 148, 148);
+  text-decoration-line: none;
+}
+#follow_form .follow a{
+  color: rgb(240, 174, 98);
+  text-decoration-line: none;
 }

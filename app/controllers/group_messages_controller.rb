@@ -1,4 +1,5 @@
 class GroupMessagesController < ApplicationController
+  before_action :user_signed_check
   before_action :set_group
 
   def index

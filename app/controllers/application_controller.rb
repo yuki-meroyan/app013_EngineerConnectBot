@@ -15,4 +15,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def user_signed_check
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
+  end
+
 end

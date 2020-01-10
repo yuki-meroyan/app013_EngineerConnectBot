@@ -8,15 +8,16 @@
       .form__label
         ニックネーム
       = @user.name
-    - if @user.user_detail.present? && @follow.present?
+    #follow_form.form__content
+      .form__label
+        フォローステータス
+      = render 'follow_form', user: @user if user_signed_in?
+    - if @user.user_detail.present? && @following == true
       .form__content
         .form__label
         = link_to "詳細を見る", user_detail_path(@user), class: "article__category__content--link"
+    - if @followable
       .form__content
         .form__label
-        = link_to "メッセージを送る", "", class: "article__category__content--link"
-    .form__content
-      = render 'follow_form', user: @user if user_signed_in?
+        = link_to "メッセージを送る", new_user_private_message_path(user_id: current_user.id, send_user_id: @user.id), class: "article__category__content--link"
 
--# %h4
--#   = render 'users/stats'

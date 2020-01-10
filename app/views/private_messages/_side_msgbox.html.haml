@@ -6,23 +6,24 @@
         .private__message--jenre
           受信ボックス
       .private-from-list
-        - if @send_messages.present?
+        - if send_messages.present?
           - send_messages.each do |send_message|
-            .private__message__box--name
-              = link_to engineer_connect_bots_message_lists_path(user_id: message.user.id, target_box: "受信" ) do
-                = send_message.user.name
-              - send_message_count = send_message.un_read_message_check(current_user.id, send_message.user.id)
-              - if send_message_count > 0
-                .private__message__box--unReadCount
-                  = send_message_count
+            .private__message__box
+              .private__message__box--name
+                = link_to engineer_connect_bots_message_lists_path(user_id: send_message.user.id, target_box: "受信" ) do
+                  = send_message.user.name
+                - send_message_count = send_message.un_read_message_check(current_user.id, send_message.user.id)
+                - if send_message_count > 0
+                  .private__message__box--unReadCount
+                    = send_message_count
       #private-to.private__message
         = icon("far", "paper-plane", class: "footermenu__icon--size")
         .private__message--jenre
-          送信ボックス
-      .private-to-list
-        - if messages.present?
-          - messages.each do |message|
-            .private__message__box
-              = link_to engineer_connect_bots_message_lists_path(send_user_id: message.send_user.id, target_box: "送信") do
-                .private__message__box--name
-                  = message.send_user.name
+          = link_to "送信ボックス", engineer_connect_bots_message_lists_path(user_id: current_user.id, target_box: "送信"), class: "private__message--jenre"
+      -# .private-to-list
+      -#   - if messages.present?
+      -#     - messages.each do |message|
+      -#       .private__message__box
+      -#          do
+      -#           .private__message__box--name
+      -#             = message.send_user.name

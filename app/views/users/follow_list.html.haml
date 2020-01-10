@@ -1,0 +1,7 @@
+.article__contents
+  .article__category
+    .article__category--text フォローリスト
+    = render 'following_list', user: @user
+  .article__category
+    .article__category--text フォロワーリスト
+    = render 'follower_list', user: @user

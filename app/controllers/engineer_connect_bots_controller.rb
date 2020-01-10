@@ -72,17 +72,23 @@ class EngineerConnectBotsController < ApplicationController
   end
 
   def message_lists
-    @message_lists = PrivateMessage.where(user_id: current_user.id, send_user_id: message_lists_params[:send_user_id]).or(PrivateMessage.where(user_id: message_lists_params[:send_user_id], send_user_id: current_user.id)).order(created_at: "DESC")
+    # 受信ボックスの場合：user_id = 送ってきた相手のID
+    # 送信ボックスの場合：user_id = 自分のID
+    if message_lists_params[:target_box] == "受信"
+      @message_lists = PrivateMessage.where(user_id: message_lists_params[:user_id], send_user_id: current_user.id).order(created_at: "DESC")
+    else
+      @message_lists = PrivateMessage.where(user_id: current_user.id).order(created_at: "DESC")
+    end
     @messages = PrivateMessage.where(user_id: current_user.id).group(:send_user_id)
     @send_messages = PrivateMessage.where(send_user_id: current_user.id).group(:user_id)
-    @target_user = User.find_by(id: message_lists_params[:send_user_id])
+    @target_user = User.find_by(id: message_lists_params[:user_id])
     @target_box = message_lists_params[:target_box]
   end
 
   private
 
   def message_lists_params
-    params.permit(:send_user_id, :target_box)
+    params.permit(:user_id, :target_box)
   end
 
 end

@@ -1,9 +1,13 @@
 .article__contents
   .article__category
     .article__category--text グループメニュー
-  .article__content
-    = link_to 'グループ作成', new_group_path
-  .article__content
-    = link_to 'グループ一覧', engineer_connect_bots_have_group_path
-  .article__content
-    = link_to 'グループ検索', groups_path
+  - if user_signed_in?
+    .article__content
+      = link_to 'グループ作成', new_group_path
+    .article__content
+      = link_to 'グループ一覧', engineer_connect_bots_have_group_path
+    .article__content
+      = link_to 'グループ検索', groups_path
+  - else
+    .article__content
+      ※ログインが必要です
