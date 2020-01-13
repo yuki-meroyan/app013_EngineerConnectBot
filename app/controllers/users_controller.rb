@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :user_signed_check
 
   def index
-    @user = User.ransack(params[:q])
+    @user = User.ransack(params[:x])
     @users = @user.result(distinct: true).where('id != ?', current_user.id)
     # @users = @user.result(distinct: true).includes(:followers).where(followers: { id: @users })
     # binding.pry
