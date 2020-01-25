@@ -12,11 +12,11 @@ class UsersController < ApplicationController
     # @users = User.where('name LIKE(?) and id != ?', "%#{params[:keyword]}%", current_user.id).where.not(id: params[:selected_users]).eager_load(:followers).where(followers: { id: current_user.id })
     # @relationships = Relationship.where('name LIKE(?) and id != ?', "%#{params[:keyword]}%", current_user.id).where.not(id: params[:selected_users])
     # binding.pry
-    # @myUserId = current_user.id
-    # respond_to do |format|
-    #   format.html
-    #   format.json
-    # end
+    @targetUser = User.where('name LIKE(?) and id != ?', "%#{params[:keyword]}%", current_user.id).where.not(id: params[:selected_users])
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def show
