@@ -25,7 +25,7 @@
       - @group.users.each do |user|
         .form__search__result__box
           %input{id: "group_user_ids", name: "group[user_ids][]", type: "hidden", value: user.id}
-          = image_tag user.image.url, class: "form__search__image"
+          = image_tag user.image.url, class: "form__search__image" if user.image.url
           .form__search__name
             = user.name
           - if user.id != current_user.id
