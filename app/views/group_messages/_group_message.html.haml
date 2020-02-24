@@ -6,7 +6,7 @@
           .group__message__text.group__message__text--right
             = group_message.text
       .group__message__user
-        = image_tag group_message.user.image.url, class: "group__message__user__image"
+        = image_tag group_message.user.image.url, class: "group__message__user__image" if group_message.user.image.url
         %p.group__message__user__name
           = group_message.user.name
         %p.group__message__date
@@ -16,7 +16,7 @@
     .group__message__box{"data-message_id": group_message.id}
       .group__message__contents.position-right
         .group__message__content.position-right
-          = image_tag group_message.image.url, class: 'group__message__image'
+          = image_tag group_message.image.url, class: 'group__message__image' if group_message.user.image.url
       .group__message__user
         = image_tag group_message.user.image.url, class: "group__message__user__image"
         %p.group__message__user__name
@@ -27,7 +27,7 @@
   - if group_message.text.present?
     .group__message__box{"data-message_id": group_message.id}
       .group__message__user
-        = image_tag group_message.user.image.url, class: "group__message__user__image"
+        = image_tag group_message.user.image.url, class: "group__message__user__image" if group_message.user.image.url
         %p.group__message__user__name
           = group_message.user.name
         %p.group__message__date
@@ -39,7 +39,7 @@
   - if group_message.image.present?
     .group__message__box{"data-message_id": group_message.id}
       .group__message__user
-        = image_tag group_message.user.image.url, class: "group__message__user__image"
+        = image_tag group_message.user.image.url, class: "group__message__user__image" if group_message.user.image.url
         %p.group__message__user__name
           = group_message.user.name
         %p.group__message__date
