@@ -6,7 +6,7 @@
       - current_user.all_following.each do |following|
         .users__list
           .users__list__image
-            - if current_user.image.present?
+            - if following.image.present?
               = image_tag following.image.to_s, alt: "test", class: "form__search__image"
           .users__list__name
             = link_to following.name, user_path(following.id)
