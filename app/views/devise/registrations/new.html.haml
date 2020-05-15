@@ -3,7 +3,7 @@
     %h2 ユーザー新規登録
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = render "devise/shared/error_messages", resource: resource
-      .form__content
+      .form__content 
         = f.label :email, class: "form__label"
         = f.email_field :email, autofocus: true, autocomplete: "email", class: "form__box"
       .form__content
